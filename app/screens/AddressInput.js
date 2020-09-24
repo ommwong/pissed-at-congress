@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, SafeAreaView, TextInput, Button } from 'react-native';
-import { getRepByAddress } from '../../ApiService'
 
 export default function AddressInput( {getReps} ) {
 
@@ -11,8 +10,9 @@ export default function AddressInput( {getReps} ) {
 
 
   function handleChange (input, stateName) {
-    // setCity('hello')
+
     console.log(input, stateName)
+
     switch(stateName) {
       case 'line1' :
         return setLine1(input)

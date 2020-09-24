@@ -1,7 +1,7 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import WelcomeScreen from './app/screens/WelcomeScreen';
 import AddressInput from './app/screens/AddressInput';
-import GetReps from './app/screens/GetReps'
+import RepList from './app/screens/RepList'
 import { SafeAreaView } from 'react-native';
 import { getRepByAddress } from './ApiService';
 
@@ -18,7 +18,7 @@ export default function App() {
   return (
     <SafeAreaView>
       <AddressInput getReps={getReps}></AddressInput>
-      <GetReps reps={reps}></GetReps>
+      <RepList reps={reps}></RepList>
     </SafeAreaView>
   );
 }
