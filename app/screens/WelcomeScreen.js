@@ -4,7 +4,7 @@ import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
 export default function WelcomeScreen() {
   return (
     <SafeAreaView style={styles.container}>
-      <Text>Hello World!!!!!</Text>
+      <Text>Hello World</Text>
     </SafeAreaView>
   );
 }
