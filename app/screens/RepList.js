@@ -8,19 +8,17 @@ export default function RepList() {
   const [ reps, setReps ] = useState([]);
 
   useEffect(() => {
-    getSenate()
-      .then(results => setReps(results))
-    // getRepByAddress()
-    //   .then(results => console.log(results))
+    // getSenate()
+    //   .then(list => setReps(list))
+    getRepByAddress()
+      .then(results => setReps(results.officials.slice(2, 5)))
   }, [])
-
-  console.log(reps)
 
   return (
     <SafeAreaView >
       <Text>Hello from RepList!</Text>
 
-      <Reps></Reps>
+      <Reps reps={reps}></Reps>
 
     </SafeAreaView>
 

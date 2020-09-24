@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, SafeAreaView, TextInput, Button } from 'react-native';
 import GoogleAutoPlaces from './GoogleAutoPlaces';
-// import { getAddress } from '../../ApiService'
+import { getRepByAddress } from '../../ApiService'
 
 export default function AddressInput() {
 
@@ -24,7 +24,7 @@ export default function AddressInput() {
   }
 
   function handleSubmit (input) {
-    // getAddress(line1, city, state, zip)
+    getRepByAddress(line1, city, state, zip)
 
     if (input) {
       setLine1('');
@@ -37,13 +37,13 @@ export default function AddressInput() {
   return (
 
     <SafeAreaView>
+      <View>
 
       <Text style={styles.addressHeader}>What is your address?</Text>
 
         <TextInput
           style={styles.addressInput}
-          defaultValue={line1}
-          autoCapitalize='words'
+          value={line1}
           onChangeText={text => {handleChange(text, line1)}}
           placeholder='Street Address'
           >
@@ -51,7 +51,7 @@ export default function AddressInput() {
 
         <TextInput
           style={styles.addressInput}
-          defaultValue={city}
+          value={city}
           onChangeText={text => {handleChange(text, city)}}
           placeholder='City'
           >
@@ -59,7 +59,7 @@ export default function AddressInput() {
 
         <TextInput
           style={styles.addressInput}
-          defaultValue={state}
+          value={state}
           onChangeText={text => {handleChange(text, state)}}
           placeholder='State'
           >
@@ -67,7 +67,7 @@ export default function AddressInput() {
 
         <TextInput
           style={styles.addressInput}
-          defaultValue={zip}
+          value={zip}
           onChangeText={text => {handleChange(text, zip)}}
           placeholder='Zip Code'
           >
@@ -80,6 +80,7 @@ export default function AddressInput() {
           onPress = {(input) => {handleSubmit(input)}}
         />
 
+      </View>
     </SafeAreaView>
   )
 
