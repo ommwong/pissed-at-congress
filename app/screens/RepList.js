@@ -1,27 +1,23 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
-import { getSenate, getRepByAddress } from '../../ApiService';
-import Reps from './Reps'
+import Results from './Results'
 
-export default function RepList() {
-
-  const [ reps, setReps ] = useState([]);
-
-  useEffect(() => {
-    // getSenate()
-    //   .then(list => setReps(list))
-    getRepByAddress()
-      .then(results => setReps(results.officials.slice(2, 5)))
-  }, [])
+export default function RepList({ reps }) {
 
   return (
     <SafeAreaView >
-      <Text>Hello from RepList!</Text>
 
-      <Reps reps={reps}></Reps>
+      {reps
+        .slice(2, 5)
+        .map(rep =>
+          <Results
+            rep={rep}
+          />
+      )}
+
+      <Text>Hi from RepList</Text>
 
     </SafeAreaView>
-
 
   );
 }
