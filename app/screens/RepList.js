@@ -15,8 +15,6 @@ export default function RepList({ reps }) {
           />
       )}
 
-      <Text>Hi from RepList</Text>
-
     </SafeAreaView>
 
   );

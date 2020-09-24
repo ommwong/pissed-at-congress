@@ -7,7 +7,7 @@ export default function Results( {rep} ) {
   return (
     <SafeAreaView>
 
-      <Text>
+      <Text onPress={()=>{alert('Hello')}}>
         {rep.name}
       </Text>
 

@@ -3,18 +3,16 @@ import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
 import { getRepByAddress } from '../../ApiService';
 import RepList from './RepList'
 
-export default function GetReps() {
+export default function GetReps({reps}) {
 
-  const [ reps, setReps ] = useState([]);
 
-  useEffect(() => {
-    getRepByAddress()
-      .then(results => setReps(results.officials))
-  }, [])
+  // useEffect(() => {
+  //   getRepByAddress(input)
+  //     .then(results => setReps(results.officials))
+  // }, [])
 
   return (
     <SafeAreaView >
-      <Text>Hello from GetReps!</Text>
 
       <RepList reps={reps}></RepList>
 

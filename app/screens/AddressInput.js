@@ -1,30 +1,32 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, SafeAreaView, TextInput, Button } from 'react-native';
-import GoogleAutoPlaces from './GoogleAutoPlaces';
 import { getRepByAddress } from '../../ApiService'
 
-export default function AddressInput() {
+export default function AddressInput( {getReps} ) {
 
   const [line1, setLine1] = useState('');
   const [city, setCity] = useState('');
   const [state, setState] = useState('');
   const [zip, setZip] = useState('');
 
+
   function handleChange (input, stateName) {
+    // setCity('hello')
+    console.log(input, stateName)
     switch(stateName) {
-      case stateName === 'line1':
+      case 'line1' :
         return setLine1(input)
-      case stateName === 'city' :
+      case 'city' :
         return setCity(input)
-      case stateName === 'state' :
+      case 'state' :
         return setState(input)
-      case stateName === 'zip' :
-        return setState(input)
+      case 'zip' :
+        return setZip(input)
     }
   }
 
   function handleSubmit (input) {
-    getRepByAddress(line1, city, state, zip)
+    getReps(line1, city, state, zip)
 
     if (input) {
       setLine1('');
@@ -37,42 +39,36 @@ export default function AddressInput() {
   return (
 
     <SafeAreaView>
-      <View>
 
       <Text style={styles.addressHeader}>What is your address?</Text>
 
         <TextInput
           style={styles.addressInput}
           value={line1}
-          onChangeText={text => {handleChange(text, line1)}}
+          onChangeText={text => {handleChange(text, 'line1')}}
           placeholder='Street Address'
-          >
-        </TextInput>
+        />
 
         <TextInput
           style={styles.addressInput}
           value={city}
-          onChangeText={text => {handleChange(text, city)}}
+          onChangeText={text => {handleChange(text, 'city')}}
           placeholder='City'
-          >
-        </TextInput>
+        />
 
         <TextInput
           style={styles.addressInput}
           value={state}
-          onChangeText={text => {handleChange(text, state)}}
+          onChangeText={text => {handleChange(text, 'state')}}
           placeholder='State'
-          >
-        </TextInput>
+        />
 
         <TextInput
           style={styles.addressInput}
           value={zip}
-          onChangeText={text => {handleChange(text, zip)}}
+          onChangeText={text => {handleChange(text, 'zip')}}
           placeholder='Zip Code'
-          >
-        </TextInput>
-
+        />
 
         <Button
           style={styles.button}
@@ -80,7 +76,6 @@ export default function AddressInput() {
           onPress = {(input) => {handleSubmit(input)}}
         />
 
-      </View>
     </SafeAreaView>
   )
 
