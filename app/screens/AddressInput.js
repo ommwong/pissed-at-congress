@@ -70,15 +70,17 @@ export default function AddressInput( {getReps, navigation} ) {
           placeholder='Zip Code'
         />
 
-        <Button
-          style={styles.button}
-          title='Continue'
-          onPress = {(input) => {handleSubmit(input)}}
-        />
+        <TouchableOpacity>
+          { line1, city, state, zip !== ''
+            ? <Button
+            style={styles.button}
+            title='Continue'
+            onPress = {(input) => {handleSubmit(input)}}/>
+            : null }
+        </TouchableOpacity>
 
     </SafeAreaView>
   )
-
 };
 
 const styles = StyleSheet.create({
