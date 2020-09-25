@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, SafeAreaView, TextInput, Button, TouchableOpacity } from 'react-native';
+import GoogleAutoPlaces from '../components/GoogleAutoPlaces';
 
-export default function AddressInput( {getReps, navigation} ) {
+export default function AddressInput( {getReps, propublicaApi, navigation} ) {
 
   const [line1, setLine1] = useState('');
   const [city, setCity] = useState('');
   const [state, setState] = useState('');
   const [zip, setZip] = useState('');
-
 
   function handleChange (input, stateName) {
 
@@ -32,9 +32,7 @@ export default function AddressInput( {getReps, navigation} ) {
       setState('');
       setZip('');
     }
-
     navigation.navigate('RepList');
-
   }
 
   return (
@@ -42,6 +40,8 @@ export default function AddressInput( {getReps, navigation} ) {
     <SafeAreaView>
 
       <Text style={styles.addressHeader}>What is your address?</Text>
+
+      {/* <GoogleAutoPlaces /> */}
 
         <TextInput
           style={styles.addressInput}
@@ -101,6 +101,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0,0,0,0)',
     borderTopWidth: 0,
     borderBottomWidth: 0,
+    zIndex: 100
   },
   googleTest: {
     marginLeft: 0,

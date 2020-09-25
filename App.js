@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Home from './app/screens/Home';
 import AddressInput from './app/screens/AddressInput';
 import Rep from './app/screens/Rep'
@@ -6,27 +6,26 @@ import RepList from './app/components/RepList'
 import { getRepByAddress, getSenate, getHouse } from './ApiService';
 import { NavigationContainer, StackActions } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { Text } from 'react-native';
+
 
 const Stack = createStackNavigator();
-
 
 export default function App() {
 
   const [ reps, setReps ] = useState([]);
-  // const [ house, getHouse ] = useState([]);
-  // const [ senate, getSenate ] = useState([]);
+  const [ house, getHouse ] = useState([]);
+  const [ senate, getSenate ] = useState([]);
 
   const getReps = (line1, city, state, zip) => {
     getRepByAddress(line1, city, state, zip)
       .then(results => setReps(results.officials))
   }
 
-  // useEffect(() => {
+  // const propublicaApi = () => {
   //   getSenate()
-  //     .then(senate => getSenate(senate.results))
-  //   getHouse()
-  //     .then(house => getHouse(house.results))
-  // }, [])
+  //     .then(results => console.log(results))
+  // }
 
   return (
     <NavigationContainer>
@@ -48,7 +47,7 @@ export default function App() {
 
         <Stack.Screen name="Rep">
           {props => (
-            <Rep rep={props} {...props} />
+            <Rep {...props} />
           )}
         </Stack.Screen>
 
