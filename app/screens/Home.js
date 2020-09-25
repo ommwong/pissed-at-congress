@@ -13,9 +13,3 @@ export default function Home ( {navigation} ) {
   );
 }
 
-
-// <TouchableOpacity onPress={() => {
-//   navigation.navigate('AddressInput')
-// }}>
-//   <Text>Hello from Home screen</Text>
-// </TouchableOpacity>

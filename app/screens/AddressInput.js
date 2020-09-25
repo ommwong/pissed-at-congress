@@ -11,8 +11,6 @@ export default function AddressInput( {getReps, navigation} ) {
 
   function handleChange (input, stateName) {
 
-    console.log(input, stateName)
-
     switch(stateName) {
       case 'line1' :
         return setLine1(input)
@@ -34,6 +32,9 @@ export default function AddressInput( {getReps, navigation} ) {
       setState('');
       setZip('');
     }
+
+    navigation.navigate('RepList');
+
   }
 
   return (
