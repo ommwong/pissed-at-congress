@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, SafeAreaView, TextInput, Button } from 'react-native';
+import { StyleSheet, Text, SafeAreaView, TextInput, Button, TouchableOpacity } from 'react-native';
 
-export default function AddressInput( {getReps} ) {
+export default function AddressInput( {getReps, navigation} ) {
 
   const [line1, setLine1] = useState('');
   const [city, setCity] = useState('');

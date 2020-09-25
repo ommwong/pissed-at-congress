@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, FlatList } from 'react-native';
 
 export default function Results( {rep} ) {
 
@@ -8,8 +8,9 @@ export default function Results( {rep} ) {
   return (
     <SafeAreaView>
 
-      <Text onPress={()=>{alert('Hello')}}>
+      <Text>
         {rep.name}
+        {rep.party}
       </Text>
 
     </SafeAreaView>
