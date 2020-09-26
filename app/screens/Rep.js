@@ -26,7 +26,7 @@ export default function Rep (props) {
           : null
       }
       <Text> {rep.name} </Text>
-       <Text> {rep.party} </Text>
+      <Text> {rep.party} </Text>
 
       {rep.urls.toString().substring(22, rep.urls.length).includes('senate.gov/')
         ? <Text> Senate</Text>

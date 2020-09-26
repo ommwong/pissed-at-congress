@@ -10,9 +10,9 @@ export default function Home ( {navigation} ) {
           <Text>Go to AddressInput</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => {
-          navigation.navigate('RepMenu')
+          navigation.navigate('RepSearch')
         }}>
-          <Text>Go to RepMenu</Text>
+          <Text>Go to RepSearch</Text>
         </TouchableOpacity>
     </SafeAreaView>
   );

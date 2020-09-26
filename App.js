@@ -3,7 +3,7 @@ import Home from './app/screens/Home';
 import AddressInput from './app/screens/AddressInput';
 import Rep from './app/screens/Rep';
 import RepList from './app/components/RepList';
-import RepMenu from './app/screens/RepMenu';
+import RepSearch from './app/screens/RepSearch';
 import { getRepByAddress, getSenate, getHouse } from './ApiService';
 import { NavigationContainer, StackActions } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -32,9 +32,9 @@ export default function App() {
 
         <Stack.Screen name="Home" component={Home} />
 
-        <Stack.Screen name="RepMenu">
+        <Stack.Screen name="RepSearch">
           {props => (
-            <RepMenu senators={senators} {...props} />
+            <RepSearch senators={senators} {...props} />
           )}
         </Stack.Screen>
 
