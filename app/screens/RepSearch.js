@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, SafeAreaView, TextInput, TouchableOpacity, Image, FlatList } from 'react-native'
 
-export default function RepSearch ({ senators }) {
+export default function RepSearch ({ senators, navigation }) {
 
   const [ searchResult, setSearchResult ] = useState([]);
   const [ query, setQuery ] = useState('');
 
   function handleSearchName (input) {
-
     console.log('input', input);
 
     const formatedQuery = input.slice(0).toUpperCase();
@@ -36,7 +35,9 @@ export default function RepSearch ({ senators }) {
         keyExtractor={sen => sen.id}
         renderItem={({item}) => {
           return (
-          <Text>{item.first_name}{item.last_name}{item.party}</Text>
+            <TouchableOpacity onPress={() => navigation.navigate('Rep', item)}>
+              <Text>{item.first_name} {item.last_name}</Text>
+            </TouchableOpacity>
             )
         }}
       />
@@ -44,31 +45,3 @@ export default function RepSearch ({ senators }) {
     </SafeAreaView>
   );
 }
-
-
-// const [ query, setQuery ] = useState('');
-
-// const findSenator = (query, senators) => {
-//   if (query === '') {
-//     return [];
-//   }
-//   const firstName = senators.map(sen => sen.first_name);
-//   const lastName = senators.map(sen => sen.last_name);
-//   return `${firstName}${lastName}`
-// }
-
-// <Autocomplete
-// autoCapitalize="none"
-// autoCorrect={false}
-// data={findSenator(query, senators)}
-// defaultValue={query}
-// onChangeText={input => setQuery(input)}
-// placeholder="Enter name"
-// renderItem={({ item }) => (
-//   <TouchableOpacity onPress={() => setQuery(item.first_name, item.last_name)}>
-//     <Text>
-//       {item.first_name} {item.last_name}
-//     </Text>
-//   </TouchableOpacity>
-// )}
-// />

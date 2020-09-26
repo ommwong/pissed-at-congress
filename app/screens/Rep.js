@@ -7,13 +7,13 @@ const callPhone = (number) => {
   Linking.openURL(`tel:+1${number}`)
 };
 
-const shareRep = () => {
-  if (!( Sharing.isAvailableAsync())) {
-    alert('Damn, it does not work');
-    return;
-  }
-  Sharing.shareAsync() //add local file
-}
+// const shareRep = () => {
+//   if (!( Sharing.isAvailableAsync())) {
+//     alert('Damn, it does not work');
+//     return;
+//   }
+//   Sharing.shareAsync() //add local file
+// }
 
 export default function Rep (props) {
 
