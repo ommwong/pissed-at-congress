@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, SafeAreaView, TextInput, TouchableOpacity, Image, FlatList } from 'react-native'
+import { StyleSheet, Text, SafeAreaView, TextInput, TouchableOpacity, FlatList } from 'react-native'
 
 export default function RepSearch ({ senators, navigation }) {
 
@@ -45,3 +45,4 @@ export default function RepSearch ({ senators, navigation }) {
     </SafeAreaView>
   );
 }
+

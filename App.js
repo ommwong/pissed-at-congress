@@ -15,11 +15,17 @@ export default function App() {
 
   const [ reps, setReps ] = useState([]);
   const [ senators, setSenators ] = useState([]);
+  // const [ houseReps, getHouseReps ] = useState([]);
 
   useEffect(() => {
     getSenate()
       .then(list => list.results.map(senate => setSenators(senate.members)))
   }, [])
+
+  // useEffect(() => {
+  //   getHouse()
+  //     .then(list => list.results.map(house => setSenators([...senators, house.members])))
+  // }, [])
 
   const getReps = (line1, city, state, zip) => {
     getRepByAddress(line1, city, state, zip)
