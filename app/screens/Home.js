@@ -10,7 +10,7 @@ export default function Home ( {navigation} ) {
           <Text>Search by Address</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => {
-          navigation.navigate('SenateSearch')
+          navigation.navigate('PickerComponent')
         }}>
           <Text>Search by Name</Text>
         </TouchableOpacity>

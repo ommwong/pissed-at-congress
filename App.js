@@ -4,6 +4,8 @@ import AddressInput from './app/screens/AddressInput';
 import Rep from './app/screens/Rep';
 import RepList from './app/components/RepList';
 import SenateSearch from './app/screens/SenateSearch';
+import HouseSearch from './app/screens/HouseSearch';
+import PickerComponent from './app/screens/PickerComponent'
 import { getRepByAddress, getSenate, getHouse } from './ApiService';
 import { NavigationContainer, StackActions } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -17,15 +19,15 @@ export default function App() {
   const [ senators, setSenators ] = useState([]);
   const [ houseReps, setHouseReps ] = useState([]);
 
-  const getSenateAPI = () => {
+  useEffect(() => {
     getSenate()
-      .then(list => list.results.map(senate => setSenators(senate.members)))
-  }
+    .then(list => list.results.map(senate => setSenators(senate.members)))
+  }, [])
 
-  const getHouseAPI = () => {
+  useEffect(() => {
     getHouse()
-      .then(list => list.results.map(house => setHouseReps(house.members)))
-  }
+    .then(list => list.results.map(house => setHouseReps(house.members)))
+  }, [])
 
   const getReps = (line1, city, state, zip) => {
     getRepByAddress(line1, city, state, zip)
@@ -38,11 +40,24 @@ export default function App() {
 
         <Stack.Screen name="Home" component={Home} />
 
-        <Stack.Screen name="SenateSearch">
+        <Stack.Screen name="PickerComponent">
           {props => (
-            <SenateSearch senators={senators} houseReps={houseReps} getSenateAPI={getSenateAPI} getHouseAPI={getHouseAPI} {...props} />
+            <PickerComponent senators={senators} houseReps={houseReps} {...props} />
           )}
         </Stack.Screen>
+
+
+        {/* <Stack.Screen name="SenateSearch">
+          {props => (
+            <SenateSearch senators={senators} {...props} />
+          )}
+        </Stack.Screen>
+
+        <Stack.Screen name="HouseSearch">
+          {props => (
+            <HouseSearch  houseReps={houseReps} {...props} />
+          )}
+        </Stack.Screen> */}
 
         <Stack.Screen name="AddressInput">
           {props => (

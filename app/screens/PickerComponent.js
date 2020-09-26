@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native'
+import { View } from 'react-native'
 import { Picker } from '@react-native-community/picker';
+import SenateSearch from './SenateSearch';
+import HouseSearch from './HouseSearch';
 
-export default function PickerComponent ({ getSenateAPI, getHouseAPI }) {
+
+export default function PickerComponent ({senators, houseReps}) {
 
   const [ chamber, setChamber ] = useState('Senate');
 
-  chamber === 'Senate' ? getSenateAPI() : getHouseAPI();
+  const senatorsList = senators;
+  const houseList = houseReps;
 
   return (
 
@@ -21,11 +25,11 @@ export default function PickerComponent ({ getSenateAPI, getHouseAPI }) {
         <Picker.Item label='House' value='House' />
 
       </Picker>
-{/*
+
       {chamber === 'Senate'
-        ? <SenateSearch />
-        : <HouseSearch />
-      } */}
+        ? <SenateSearch senatorsList={senatorsList}/>
+        : <HouseSearch houseList={houseList}/>
+      }
 
     </View>
   )

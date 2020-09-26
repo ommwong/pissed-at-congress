@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, SafeAreaView, TextInput, TouchableOpacity, FlatList, Image } from 'react-native'
-import PickerComponent from './PickerComponent';
+import PickerComponent from './PickerComponent'
 
-export default function SenateSearch ({ senators, houseReps, getHouseAPI, getSenateAPI, navigation }) {
+export default function SenateSearch ({ senatorsList, navigation }) {
 
   const [ searchResult, setSearchResult ] = useState([]);
   const [ query, setQuery ] = useState('');
@@ -13,17 +13,15 @@ export default function SenateSearch ({ senators, houseReps, getHouseAPI, getSen
 
     setQuery(formatedQuery);
 
-    const filteredResult = senators.filter(name => name.first_name.includes(input, formatedQuery) || name.last_name.includes(input, formatedQuery));
+    const filteredResult = senatorsList.filter(name => name.first_name.includes(input, formatedQuery) || name.last_name.includes(input, formatedQuery));
 
     setSearchResult(filteredResult);
 
-  }
+  };
 
   return (
 
     <SafeAreaView>
-
-      <PickerComponent getSenateAPI={getSenateAPI} getHouseAPI={getHouseAPI}/>
 
       <TextInput
         placeholder='Enter a name'
