@@ -7,7 +7,12 @@ export default function Home ( {navigation} ) {
         <TouchableOpacity onPress={() => {
           navigation.navigate('AddressInput')
         }}>
-          <Text>Hello from Home screen</Text>
+          <Text>Go to AddressInput</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => {
+          navigation.navigate('RepMenu')
+        }}>
+          <Text>Go to RepMenu</Text>
         </TouchableOpacity>
     </SafeAreaView>
   );

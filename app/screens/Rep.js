@@ -1,11 +1,19 @@
 import React from 'react'
 import { SafeAreaView, Text, TouchableOpacity, View, Image } from 'react-native';
 import * as Linking from 'expo-linking';
-// import * as Sharing from 'expo-sharing'; //SHARING
+import * as Sharing from 'expo-sharing'; //SHARING
 
 const callPhone = (number) => {
   Linking.openURL(`tel:+1${number}`)
 };
+
+const shareRep = () => {
+  if (!( Sharing.isAvailableAsync())) {
+    alert('Damn, it does not work');
+    return;
+  }
+  Sharing.shareAsync() //add local file
+}
 
 export default function Rep (props) {
 
@@ -18,7 +26,7 @@ export default function Rep (props) {
           : null
       }
       <Text> {rep.name} </Text>
-      <Text> {rep.party} </Text>
+       <Text> {rep.party} </Text>
 
       {rep.urls.toString().substring(22, rep.urls.length).includes('senate.gov/')
         ? <Text> Senate</Text>
@@ -27,7 +35,7 @@ export default function Rep (props) {
 
       <Text onPress={() => {callPhone(rep.phones)}}> {rep.phones} </Text>
 
-      <Text> SHARE REP </Text>
+      <Text onPress={() => {shareRep()}}> SHARE REP </Text>
 
     </SafeAreaView>
   )
