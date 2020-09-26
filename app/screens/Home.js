@@ -7,12 +7,12 @@ export default function Home ( {navigation} ) {
         <TouchableOpacity onPress={() => {
           navigation.navigate('AddressInput')
         }}>
-          <Text>Go to AddressInput</Text>
+          <Text>Search by Address</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => {
-          navigation.navigate('RepSearch')
+          navigation.navigate('SenateSearch')
         }}>
-          <Text>Go to RepSearch</Text>
+          <Text>Search by Name</Text>
         </TouchableOpacity>
     </SafeAreaView>
   );

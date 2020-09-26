@@ -3,7 +3,7 @@ import Home from './app/screens/Home';
 import AddressInput from './app/screens/AddressInput';
 import Rep from './app/screens/Rep';
 import RepList from './app/components/RepList';
-import RepSearch from './app/screens/RepSearch';
+import SenateSearch from './app/screens/SenateSearch';
 import { getRepByAddress, getSenate, getHouse } from './ApiService';
 import { NavigationContainer, StackActions } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -15,17 +15,17 @@ export default function App() {
 
   const [ reps, setReps ] = useState([]);
   const [ senators, setSenators ] = useState([]);
-  // const [ houseReps, getHouseReps ] = useState([]);
+  const [ houseReps, setHouseReps ] = useState([]);
 
-  useEffect(() => {
+  const getSenateAPI = () => {
     getSenate()
       .then(list => list.results.map(senate => setSenators(senate.members)))
-  }, [])
+  }
 
-  // useEffect(() => {
-  //   getHouse()
-  //     .then(list => list.results.map(house => setSenators([...senators, house.members])))
-  // }, [])
+  const getHouseAPI = () => {
+    getHouse()
+      .then(list => list.results.map(house => setHouseReps(house.members)))
+  }
 
   const getReps = (line1, city, state, zip) => {
     getRepByAddress(line1, city, state, zip)
@@ -38,9 +38,9 @@ export default function App() {
 
         <Stack.Screen name="Home" component={Home} />
 
-        <Stack.Screen name="RepSearch">
+        <Stack.Screen name="SenateSearch">
           {props => (
-            <RepSearch senators={senators} {...props} />
+            <SenateSearch senators={senators} houseReps={houseReps} getSenateAPI={getSenateAPI} getHouseAPI={getHouseAPI} {...props} />
           )}
         </Stack.Screen>
 
@@ -63,7 +63,6 @@ export default function App() {
         </Stack.Screen>
 
       </Stack.Navigator>
-
 
     </NavigationContainer>
 

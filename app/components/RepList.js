@@ -15,14 +15,16 @@ export default function RepList ({ reps, navigation }) {
 
         renderItem={({item}) => {
 
-          return (<TouchableOpacity onPress={() => navigation.navigate('Rep', item)}>
+          return (<TouchableOpacity onPress={() => navigation.navigate('Rep', item )}>
 
             <Text>{item.name}</Text>
 
-            {item.party === 'Democratic Party'
-              ? <Image style={{height: 200, width: 200}} source={dem} />
-              : <Image style={{height: 200, width: 200}} source={gop} />
-              }
+            {item.photoUrl !== undefined
+              ? <Image style={{height: 200, width: 200}} source={{uri: item.photoUrl}}/>
+              : item.party.includes('Democratic Party')
+                ? <Image style={{height: 200, width: 200}} source={dem} />
+                : <Image style={{height: 200, width: 200}} source={gop} />
+            }
 
           </TouchableOpacity>)
         }}

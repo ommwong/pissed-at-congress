@@ -19,7 +19,7 @@ const shareRep = () => {
 
 export default function Rep ( props ) {
 
- const rep = props.route.params;
+  const rep = props.route.params;
 
   return (
 
@@ -30,13 +30,14 @@ export default function Rep ( props ) {
             <Image style={{height: 200, width: 200}} source={{uri: `http://bioguide.congress.gov/bioguide/photo/${rep.id.charAt(0)}/${rep.id}.jpg`}} />
             <Text> {rep.first_name} {rep.last_name} </Text>
             {rep.party === 'D'
-              ? <Text> Democratic Party </Text>
-              : <Text> Republican Party </Text>
+              ? <Text> (D) {rep.state} </Text>
+              : <Text> (R) {rep.state} </Text>
             }
             {rep.chamber === 'House'
               ? <Text> US House of Representatives </Text>
               : <Text> US Senate </Text>
             }
+            <Text> Next election: {rep.next_election} </Text>
             <Text onPress={() => {callPhone(rep.phone)}}> {rep.phone} </Text>
 
           </View>
@@ -47,10 +48,12 @@ export default function Rep ( props ) {
             : rep.party.includes('Democratic Party')
                 ? <Image style={{height: 200, width: 200}} source={dem} />
                 : <Image style={{height: 200, width: 200}} source={gop} />
-
             }
             <Text> {rep.name} </Text>
-            <Text> {rep.party} </Text>
+            {rep.party === 'Democratic Party'
+              ? <Text> (D) CA </Text>
+              : <Text> (R) CA </Text>
+            }
             {rep.urls.includes('house')
               ? <Text> US House of Representatives </Text>
               : <Text> US Senate </Text>
@@ -63,6 +66,8 @@ export default function Rep ( props ) {
         <Text onPress={() => {shareRep()}}> SHARE REP </Text>
 
     </SafeAreaView>
+
+
 
   )
 }

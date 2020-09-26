@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, SafeAreaView, TextInput, Button, TouchableOpacity } from 'react-native';
 import GoogleAutoPlaces from '../components/GoogleAutoPlaces';
 
-export default function AddressInput( {getReps, navigation} ) {
+export default function AddressInput({ getReps, navigation }) {
 
   const [line1, setLine1] = useState('');
   const [city, setCity] = useState('');
