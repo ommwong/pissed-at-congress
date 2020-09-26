@@ -1,23 +1,15 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, SafeAreaView, TextInput, TouchableOpacity, FlatList, Image } from 'react-native'
-import PickerComponent from './PickerComponent'
+import { handleSearchName } from '../../handleSearchName';
 
 export default function SenateSearch ({ senatorsList, navigation }) {
+
+  const list = senatorsList;
 
   const [ searchResult, setSearchResult ] = useState([]);
   const [ query, setQuery ] = useState('');
 
-  function handleSearchName (input) {
-
-    const formatedQuery = input.slice(0).toUpperCase();
-
-    setQuery(formatedQuery);
-
-    const filteredResult = senatorsList.filter(name => name.first_name.includes(input, formatedQuery) || name.last_name.includes(input, formatedQuery));
-
-    setSearchResult(filteredResult);
-
-  };
+  handleSearchName(input);
 
   return (
 
