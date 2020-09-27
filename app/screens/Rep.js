@@ -30,8 +30,8 @@ export default function Rep ( props ) {
             <Image style={{height: 200, width: 200}} source={{uri: `http://bioguide.congress.gov/bioguide/photo/${rep.id.charAt(0)}/${rep.id}.jpg`}} />
             <Text> {rep.first_name} {rep.last_name} </Text>
             {rep.party === 'D'
-              ? <Text> (D) {rep.state} </Text>
-              : <Text> (R) {rep.state} </Text>
+              ? <Text> Democratic Party, {rep.state} </Text>
+              : <Text> Republican Party, {rep.state} </Text>
             }
             {rep.chamber === 'House'
               ? <Text> US House of Representatives </Text>
@@ -51,8 +51,8 @@ export default function Rep ( props ) {
             }
             <Text> {rep.name} </Text>
             {rep.party === 'Democratic Party'
-              ? <Text> (D) CA </Text>
-              : <Text> (R) CA </Text>
+              ? <Text> Democratic Party, CA </Text>
+              : <Text> Republican Party, CA </Text>
             }
             {rep.urls.includes('house')
               ? <Text> US House of Representatives </Text>

@@ -2,14 +2,22 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, SafeAreaView, TextInput, TouchableOpacity, FlatList, Image } from 'react-native';
 import { handleSearchName } from '../../handleSearchName';
 
-export default function HouseSearch ({ houseList, navigation }) {
-
-  const list = houseList;
+export default function HouseSearch ({ houseReps, navigation }) {
 
   const [ searchResult, setSearchResult ] = useState([]);
   const [ query, setQuery ] = useState('');
 
-  handleSearchName(input);
+  function handleSearchName (input) {
+
+    const formatedQuery = input.slice(0).toUpperCase();
+
+    setQuery(formatedQuery);
+
+    const filteredResult = houseReps.filter(name => name.first_name.includes(input, formatedQuery) || name.last_name.includes(input, formatedQuery));
+
+    setSearchResult(filteredResult);
+
+  };
 
   return (
 

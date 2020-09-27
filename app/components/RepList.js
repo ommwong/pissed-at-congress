@@ -9,10 +9,9 @@ export default function RepList ({ reps, navigation }) {
     <SafeAreaView >
 
       <FlatList
+
         data={reps.slice(2, 5)}
-
         keyExtractor={rep => rep.name}
-
         renderItem={({item}) => {
 
           return (<TouchableOpacity onPress={() => navigation.navigate('Rep', item )}>

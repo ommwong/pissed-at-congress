@@ -40,14 +40,7 @@ export default function App() {
 
         <Stack.Screen name="Home" component={Home} />
 
-        <Stack.Screen name="PickerComponent">
-          {props => (
-            <PickerComponent senators={senators} houseReps={houseReps} {...props} />
-          )}
-        </Stack.Screen>
-
-
-        {/* <Stack.Screen name="SenateSearch">
+        <Stack.Screen name="SenateSearch">
           {props => (
             <SenateSearch senators={senators} {...props} />
           )}
@@ -55,9 +48,13 @@ export default function App() {
 
         <Stack.Screen name="HouseSearch">
           {props => (
-            <HouseSearch  houseReps={houseReps} {...props} />
+            <HouseSearch houseReps={houseReps} {...props} />
           )}
-        </Stack.Screen> */}
+        </Stack.Screen>
+
+        {/* <Stack.Screen name="SenateSearch" component={SenateSearch} />
+
+        <Stack.Screen name="HouseSearch" component={HouseSearch} /> */}
 
         <Stack.Screen name="AddressInput">
           {props => (

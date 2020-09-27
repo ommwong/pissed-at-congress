@@ -9,11 +9,13 @@ export default function Home ( {navigation} ) {
         }}>
           <Text>Search by Address</Text>
         </TouchableOpacity>
+
         <TouchableOpacity onPress={() => {
-          navigation.navigate('PickerComponent')
+          navigation.navigate('SenateSearch')
         }}>
           <Text>Search by Name</Text>
         </TouchableOpacity>
+
     </SafeAreaView>
   );
 }
