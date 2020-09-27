@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, SafeAreaView, TextInput, Button, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, Text, SafeAreaView, TextInput, Button, TouchableOpacity, View, KeyboardAvoidingView } from 'react-native';
 import GoogleAutoPlaces from '../components/GoogleAutoPlaces';
+import name from '../../assets/name.png';
+
 
 export default function AddressInput({ getReps, navigation }) {
 
@@ -37,7 +39,7 @@ export default function AddressInput({ getReps, navigation }) {
 
   return (
 
-    <View style={styles.container}>
+    <KeyboardAvoidingView style={styles.container} behavior="padding">
 
       <View style={styles.top}></View>
       <View style={styles.middle}>
@@ -83,16 +85,20 @@ export default function AddressInput({ getReps, navigation }) {
         </View>
 
         <View style={styles.continue}>
-            <Button
+          <TouchableOpacity>
+            { line1, city, state, zip !== ''
+             ? <Button
               title='CONTINUE'
               onPress = {(input) => {handleSubmit(input)}}
               color="purple"/>
+              : null }
+            </TouchableOpacity>
         </View>
 
       </View>
       <View style={styles.bottom}></View>
 
-    </View>
+    </KeyboardAvoidingView>
 
   )
 };
@@ -131,7 +137,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     marginBottom: 30,
     position: 'relative',
-    top: '12%',
+    top: '9%',
     alignSelf: 'center',
     fontWeight: 'bold'
   },
@@ -139,21 +145,17 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     width: '100%',
     backgroundColor: '#fff',
-    top: '12%',
-    paddingBottom: 80,
-    paddingTop: 20
-  },
-  mainForm: {
-
+    top: '10%',
+    paddingBottom: 70,
+    paddingTop: 20,
+    borderRadius: 25,
   },
   continue: {
-    marginTop: 2,
     backgroundColor:'green',
     borderRadius: 45,
-    borderWidth: 1,
     borderColor: 'green',
     marginLeft: 40,
-    marginRight: 40,
+    marginRight: 40
   },
   input: {
     fontSize: 20,
