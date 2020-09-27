@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, SafeAreaView, TextInput, Button, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, SafeAreaView, TextInput, Button, TouchableOpacity, View } from 'react-native';
 import GoogleAutoPlaces from '../components/GoogleAutoPlaces';
 
 export default function AddressInput({ getReps, navigation }) {
@@ -37,40 +37,84 @@ export default function AddressInput({ getReps, navigation }) {
 
   return (
 
-    <SafeAreaView>
+    <SafeAreaView style={{
+      backgroundColor: '#fff',
+      flex: 1,
+      flexDirection: 'column'
+    }}>
 
-      <Text style={styles.addressHeader}>What is your address?</Text>
+      <View style={{
+          backgroundColor: 'dodgerblue',
+          flex: 1,
+          flexDirection: 'row',
+          justifyContent: 'space-evenly',
+          alignItems: 'center'
+        }}>
+        <Text> WHAT IS YOUR ADDRESS? </Text>
+      </View>
 
-      {/* <GoogleAutoPlaces /> */}
-
+      <View style={{
+          backgroundColor: '#fff',
+          flex: 1,
+          flexDirection: 'column',
+          padding: 25
+        }}>
         <TextInput
           style={styles.addressInput}
           value={line1}
           onChangeText={text => {handleChange(text, 'line1')}}
           placeholder='Street Address'
-        />
 
+        />
+      </View>
+
+      <View style={{
+          backgroundColor: 'tomato',
+          flex: 1,
+          flexDirection: 'column',
+          padding: 25
+        }}>
         <TextInput
           style={styles.addressInput}
           value={city}
           onChangeText={text => {handleChange(text, 'city')}}
           placeholder='City'
         />
+      </View>
 
+      <View style={{
+          backgroundColor: 'green',
+          flex: 1,
+          flexDirection: 'column',
+          padding: 25
+        }}>
         <TextInput
           style={styles.addressInput}
           value={state}
           onChangeText={text => {handleChange(text, 'state')}}
           placeholder='State'
         />
+      </View>
 
+      <View style={{
+          backgroundColor: 'pink',
+          flex: 1,
+          flexDirection: 'column',
+          padding: 25
+        }}>
         <TextInput
           style={styles.addressInput}
           value={zip}
           onChangeText={text => {handleChange(text, 'zip')}}
           placeholder='Zip Code'
         />
+      </View>
 
+      <View style={{
+          backgroundColor: 'purple',
+          flex: 1,
+          flexDirection: 'column'
+        }}>
         <TouchableOpacity>
           { line1, city, state, zip !== ''
             ? <Button
@@ -79,6 +123,7 @@ export default function AddressInput({ getReps, navigation }) {
             onPress = {(input) => {handleSubmit(input)}}/>
             : null }
         </TouchableOpacity>
+      </View>
 
     </SafeAreaView>
   )
@@ -90,9 +135,8 @@ const styles = StyleSheet.create({
     fontWeight: 'bold'
   },
   addressInput: {
-    height: 40,
-    borderColor: 'gray',
-    borderWidth: 1
+    height: 100,
+    flex: 1
   },
   button: {
 
@@ -111,4 +155,3 @@ const styles = StyleSheet.create({
     fontSize: 16,
   }
 });
-

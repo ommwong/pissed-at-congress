@@ -1,6 +1,5 @@
 import React from 'react';
 import { SafeAreaView, Text, TouchableOpacity, StyleSheet, View, Image } from 'react-native';
-import logo from '../../assets/logo.png';
 import name from '../../assets/name.png';
 import address from '../../assets/address.png';
 
@@ -14,12 +13,11 @@ export default function Home ({ navigation }) {
         flexDirection: 'column'
       }}>
 
-
         <View style={{
           backgroundColor: 'dodgerblue',
           flex: 1.75
         }}>
-          <Text>LOGO</Text>
+          <Text>APP LOGO</Text>
         </View>
 
         <View style={{
