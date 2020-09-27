@@ -37,121 +37,131 @@ export default function AddressInput({ getReps, navigation }) {
 
   return (
 
-    <SafeAreaView style={{
-      backgroundColor: '#fff',
-      flex: 1,
-      flexDirection: 'column'
-    }}>
+    <View style={styles.container}>
 
-      <View style={{
-          backgroundColor: 'dodgerblue',
-          flex: 1,
-          flexDirection: 'row',
-          justifyContent: 'space-evenly',
-          alignItems: 'center'
-        }}>
-        <Text> WHAT IS YOUR ADDRESS? </Text>
+      <View style={styles.top}></View>
+      <View style={styles.middle}>
+        <Text style={styles.textContainer}> WHAT IS YOUR ADDRESS? </Text>
+
+        <View style={styles.formArea}>
+          <View style={styles.mainForm}>
+            <View style={styles.formItems}>
+              <TextInput
+                style={styles.input}
+                placeholder='Street Address'
+                value={line1}
+                onChangeText={text => {handleChange(text, 'line1')}}
+              >
+              </TextInput>
+
+              <TextInput
+                style={styles.input}
+                placeholder='City'
+                value={city}
+                onChangeText={text => {handleChange(text, 'city')}}
+              >
+              </TextInput>
+
+              <TextInput
+                style={styles.input}
+                placeholder='State'
+                value={state}
+                onChangeText={text => {handleChange(text, 'state')}}
+              >
+              </TextInput>
+
+              <TextInput
+                style={styles.input}
+                placeholder='Zip Code'
+                value={zip}
+                keyboardType='numeric'
+                onChangeText={text => {handleChange(text, 'zip')}}
+              >
+              </TextInput>
+            </View>
+          </View>
+        </View>
+
+        <View style={styles.continue}>
+            <Button
+              title='CONTINUE'
+              onPress = {(input) => {handleSubmit(input)}}
+              color="purple"/>
+        </View>
+
       </View>
+      <View style={styles.bottom}></View>
 
-      <View style={{
-          backgroundColor: '#fff',
-          flex: 1,
-          flexDirection: 'column',
-          padding: 25
-        }}>
-        <TextInput
-          style={styles.addressInput}
-          value={line1}
-          onChangeText={text => {handleChange(text, 'line1')}}
-          placeholder='Street Address'
+    </View>
 
-        />
-      </View>
-
-      <View style={{
-          backgroundColor: 'tomato',
-          flex: 1,
-          flexDirection: 'column',
-          padding: 25
-        }}>
-        <TextInput
-          style={styles.addressInput}
-          value={city}
-          onChangeText={text => {handleChange(text, 'city')}}
-          placeholder='City'
-        />
-      </View>
-
-      <View style={{
-          backgroundColor: 'green',
-          flex: 1,
-          flexDirection: 'column',
-          padding: 25
-        }}>
-        <TextInput
-          style={styles.addressInput}
-          value={state}
-          onChangeText={text => {handleChange(text, 'state')}}
-          placeholder='State'
-        />
-      </View>
-
-      <View style={{
-          backgroundColor: 'pink',
-          flex: 1,
-          flexDirection: 'column',
-          padding: 25
-        }}>
-        <TextInput
-          style={styles.addressInput}
-          value={zip}
-          onChangeText={text => {handleChange(text, 'zip')}}
-          placeholder='Zip Code'
-        />
-      </View>
-
-      <View style={{
-          backgroundColor: 'purple',
-          flex: 1,
-          flexDirection: 'column'
-        }}>
-        <TouchableOpacity>
-          { line1, city, state, zip !== ''
-            ? <Button
-            style={styles.button}
-            title='Continue'
-            onPress = {(input) => {handleSubmit(input)}}/>
-            : null }
-        </TouchableOpacity>
-      </View>
-
-    </SafeAreaView>
   )
 };
 
 const styles = StyleSheet.create({
-  addressHeader: {
-    height: 40,
+  container: {
+    flex: 1,
+    position: 'relative'
+  },
+  top: {
+    position: 'relative',
+    backgroundColor: 'coral',
+    paddingRight: 13,
+    paddingLeft: 13,
+    height: 250
+  },
+  middle: {
+    width: '100%',
+    height: '100%',
+    flex: 1,
+    position: 'absolute',
+    zIndex: 2,
+    backgroundColor: 'transparent',
+    paddingLeft: 30,
+    paddingRight: 30
+  },
+  bottom: {
+    position: 'relative',
+    height: '100%',
+    paddingRight: 20,
+    paddingLeft: 20,
+    backgroundColor: 'pink'
+  },
+  textContainer: {
+    color: '#fff',
+    fontSize: 20,
+    marginBottom: 30,
+    position: 'relative',
+    top: '12%',
+    alignSelf: 'center',
     fontWeight: 'bold'
   },
-  addressInput: {
-    height: 100,
-    flex: 1
+  formArea: {
+    alignSelf: 'center',
+    width: '100%',
+    backgroundColor: '#fff',
+    top: '12%',
+    paddingBottom: 80,
+    paddingTop: 20
   },
-  button: {
+  mainForm: {
 
   },
-  google: {
-    backgroundColor: 'rgba(0,0,0,0)',
-    borderTopWidth: 0,
-    borderBottomWidth: 0,
-    zIndex: 100
+  continue: {
+    marginTop: 2,
+    backgroundColor:'green',
+    borderRadius: 45,
+    borderWidth: 1,
+    borderColor: 'green',
+    marginLeft: 40,
+    marginRight: 40,
   },
-  googleTest: {
-    marginLeft: 0,
-    marginRight: 0,
-    height: 38,
-    color: '#5d5d5d',
-    fontSize: 16,
+  input: {
+    fontSize: 20,
+    padding: 20,
+    paddingLeft: 25
+  },
+  formItems: {
+    marginTop: 25,
+    borderBottomColor: 'yellow'
   }
-});
+})
