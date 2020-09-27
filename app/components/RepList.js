@@ -16,6 +16,8 @@ export default function RepList ({ reps, navigation }) {
 
           return (<TouchableOpacity onPress={() => navigation.navigate('Rep', item )}>
 
+            <View style={{flex: 1}}>
+
             <Text>{item.name}</Text>
 
             {item.photoUrl !== undefined
@@ -24,6 +26,8 @@ export default function RepList ({ reps, navigation }) {
                 ? <Image style={{height: 200, width: 200}} source={dem} />
                 : <Image style={{height: 200, width: 200}} source={gop} />
             }
+
+            </View>
 
           </TouchableOpacity>)
         }}
