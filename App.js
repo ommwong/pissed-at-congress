@@ -5,6 +5,7 @@ import Rep from './app/screens/Rep';
 import RepList from './app/components/RepList';
 import SenateSearch from './app/screens/SenateSearch';
 import HouseSearch from './app/screens/HouseSearch';
+import Loading from './app/components/Loading';
 import PickerComponent from './app/screens/PickerComponent'
 import { getRepByAddress, getSenate, getHouse } from './ApiService';
 import { NavigationContainer, StackActions } from '@react-navigation/native';

@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
-import { StyleSheet, Text, SafeAreaView, TextInput, Button, TouchableOpacity, View, KeyboardAvoidingView } from 'react-native';
-import GoogleAutoPlaces from '../components/GoogleAutoPlaces';
-import name from '../../assets/name.png';
+import React, { useState, useEffect } from 'react';
+import { StyleSheet, Text, Image, TextInput, Button, TouchableOpacity, View, KeyboardAvoidingView } from 'react-native';
+import address from '../../assets/address.png';
 
 
 export default function AddressInput({ getReps, navigation }) {
@@ -43,6 +42,15 @@ export default function AddressInput({ getReps, navigation }) {
 
       <View style={styles.top}></View>
       <View style={styles.middle}>
+
+        <View style={styles.homeButton}>
+          <TouchableOpacity onPress={() => {
+          navigation.navigate('Home')
+          }}>
+            <Image source={address} style={{height: 45, width: 45}}></Image>
+          </TouchableOpacity>
+        </View>
+
         <Text style={styles.textContainer}> WHAT IS YOUR ADDRESS? </Text>
 
         <View style={styles.formArea}>
@@ -76,7 +84,6 @@ export default function AddressInput({ getReps, navigation }) {
                 style={styles.input}
                 placeholder='Zip Code'
                 value={zip}
-                keyboardType='numeric'
                 onChangeText={text => {handleChange(text, 'zip')}}
               >
               </TextInput>
@@ -135,9 +142,9 @@ const styles = StyleSheet.create({
   textContainer: {
     color: '#fff',
     fontSize: 20,
-    marginBottom: 30,
+    marginBottom: 20,
     position: 'relative',
-    top: '9%',
+    top: '2%',
     alignSelf: 'center',
     fontWeight: 'bold'
   },
@@ -145,9 +152,9 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     width: '100%',
     backgroundColor: '#fff',
-    top: '10%',
-    paddingBottom: 70,
-    paddingTop: 20,
+    top: '3%',
+    paddingBottom: 40,
+    paddingTop: 5,
     borderRadius: 25,
   },
   continue: {
@@ -165,5 +172,9 @@ const styles = StyleSheet.create({
   formItems: {
     marginTop: 25,
     borderBottomColor: 'yellow'
+  },
+  homeButton: {
+    paddingTop: 5,
+    paddingRight: 2
   }
 })
