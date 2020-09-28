@@ -2,6 +2,8 @@ import React, { useRef } from 'react';
 import { StyleSheet, Text, View, SafeAreaView, FlatList, TouchableOpacity, Image, Dimensions, Animated } from 'react-native';
 import dem from '../../assets/dem.png';
 import gop from '../../assets/gop.png';
+import logo1 from '../../assets/logo1.png';
+
 const { width, height } = Dimensions.get('window');
 
 export default function RepList ({ reps, navigation }) {
@@ -12,6 +14,14 @@ export default function RepList ({ reps, navigation }) {
 
   return (
     <SafeAreaView style={styles.container}>
+
+      <View style={styles.homeButton}>
+        <TouchableOpacity onPress={() => {
+        navigation.navigate('AddressInput')
+        }}>
+          <Image source={logo1} style={{height: 100, width: 100}}></Image>
+        </TouchableOpacity>
+      </View>
 
       <Animated.FlatList
         showsHorizontalScrollIndicator={false}
@@ -97,5 +107,9 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     margin: 0,
     marginBottom: 10
+  },
+  homeButton: {
+    paddingRight: 1,
+    flexDirection: 'row'
   }
 })

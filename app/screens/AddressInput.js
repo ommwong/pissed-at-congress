@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, Image, TextInput, Button, TouchableOpacity, View, KeyboardAvoidingView } from 'react-native';
 import address from '../../assets/address.png';
+import logo1 from '../../assets/logo1.png';
 
 
 export default function AddressInput({ getReps, navigation }) {
@@ -47,7 +48,7 @@ export default function AddressInput({ getReps, navigation }) {
           <TouchableOpacity onPress={() => {
           navigation.navigate('Home')
           }}>
-            <Image source={address} style={{height: 45, width: 45}}></Image>
+            <Image source={logo1} style={{height: 150, width: 150}}></Image>
           </TouchableOpacity>
         </View>
 
@@ -130,7 +131,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#F1D302',
     paddingRight: 13,
     paddingLeft: 13,
-    height: 250,
+    height: 200,
     flex: 1
   },
   middle: {
@@ -187,8 +188,10 @@ const styles = StyleSheet.create({
     marginTop: 25
   },
   homeButton: {
-    paddingTop: 5,
-    paddingRight: 2
+    paddingRight: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    alignItems: 'center'
   },
   navigation: {
     flex: 0.3

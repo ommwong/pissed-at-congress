@@ -22,7 +22,7 @@ export default function Home ({ navigation }) {
           justifyContent: 'space-evenly',
           alignItems: 'center'
         }}>
-          <Image source={logo} style={{height: 325, width: 325}}></Image>
+          <Image source={logo} style={{height: 350, width: 350}}></Image>
         </View>
 
         <View style={{
