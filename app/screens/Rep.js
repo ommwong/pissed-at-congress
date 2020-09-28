@@ -4,7 +4,6 @@ import * as Linking from 'expo-linking';
 import * as Sharing from 'expo-sharing'; //SHARING
 import dem from '../../assets/dem.png';
 import gop from '../../assets/gop.png';
-import { StatusBar } from 'expo-status-bar';
 
 const callPhone = (number) => {
   Linking.openURL(`tel:+1${number}`)
@@ -27,19 +26,21 @@ export default function Rep ( props ) {
   return (
     <View style={styles.container}>
 
-      <StatusBar hidden/>
-
         <TouchableOpacity onPress={() => {setCurrentCard('name')}} style={styles.cardContainer} activeOpacity={0.9}>
           <View style={[styles.card, {backgroundColor: '#235789'}]}>
             <Text style={[styles.heading, {color: '#FDFFFC'}]}>
-              Name
+              <View>
+                {rep.id
+                  ? <Text style={styles.info_name}> {rep.first_name} {rep.last_name} </Text>
+                  : <Text style={styles.info_name}> {rep.name} </Text>
+                }
+              </View>
             </Text>
             {currentCard === 'name' && <View style={styles.subCategory}>
               <View>
               {rep.id
                 ? <View>
                     <Image style={styles.photo} source={{uri: `http://bioguide.congress.gov/bioguide/photo/${rep.id.charAt(0)}/${rep.id}.jpg`}} />
-                    <Text style={styles.info_name}> {rep.first_name} {rep.last_name} </Text>
                   </View>
                 : <View>
                     {rep.photoUrl !== undefined
@@ -48,7 +49,6 @@ export default function Rep ( props ) {
                         ? <Image style={styles.photo} source={dem} />
                         : <Image style={styles.photo} source={gop} />
                     }
-                    <Text style={styles.info_name}> {rep.name} </Text>
                   </View>
               }
               </View>
@@ -100,11 +100,11 @@ export default function Rep ( props ) {
               <View>
               {rep.id
                 ? <View>
-                    <Text onPress={() => {callPhone(rep.phone)}} style={{color: '#FDFFFC'}}> {rep.phone} </Text>
+                    <Text onPress={() => {callPhone(rep.phone)}} style={styles.phone}> {rep.phone} </Text>
                   </View>
 
                 : <View>
-                    <Text onPress={() => {callPhone(rep.phones)}} style={{color: '#FDFFFC'}}> {rep.phones} </Text>
+                    <Text onPress={() => {callPhone(rep.phones)}} style={styles.phone}> {rep.phones} </Text>
                 </View>
               }
               </View>
@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   heading: {
-    fontSize: 40,
+    fontSize: 25,
     fontWeight: '900',
     textTransform: 'uppercase',
     letterSpacing: 7
@@ -143,7 +143,7 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
     letterSpacing: 7,
     fontWeight: '900',
-    fontSize: 15,
+    fontSize: 17,
     lineHeight: 50,
     textAlign: 'center'
   },
@@ -152,13 +152,26 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
     letterSpacing: 7,
     fontWeight: '900',
-    fontSize: 20,
-    lineHeight: 50,
-    textAlign: 'center'
+    fontSize: 24,
+    lineHeight: 50
   },
   photo: {
     height: 150,
     width: 150,
     borderRadius: 100
+  },
+  phone: {
+    color: '#FDFFFC',
+    textTransform: 'uppercase',
+    letterSpacing: 7,
+    fontWeight: '900',
+    fontSize: 20,
+    lineHeight: 50,
+    textAlign: 'center'
+  },
+  subCategory: {
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center'
   }
 })
