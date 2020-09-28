@@ -56,21 +56,40 @@ export default function RepList ({ reps, navigation }) {
             <TouchableOpacity onPress={() => navigation.navigate('Rep', item )}>
 
                 <View style={{ width: item_size }}>
-                  <Animated.View style={{
-                    backgroundColor: '#FDFFFC',
-                    alignItems: 'center',
-                    borderRadius: 20,
-                    padding: spacing * 2,
-                    marginHorizontal: spacing,
-                    transform: [{ translateY }]
-                  }}>
-                    {item.photoUrl !== undefined
-                      ? <Image style={styles.image} source={{uri: item.photoUrl}}/>
-                      : item.party.includes('Democratic Party')
-                        ? <Image style={styles.image} source={{uri: 'http://bioguide.congress.gov/bioguide/photo/H/H001075.jpg'}} />
-                        : <Image style={styles.image} source={gop} />
-                    }
-                  </Animated.View>
+
+                  {item.party === 'Democratic Party'
+                    ? <Animated.View style={{
+                      backgroundColor: '#235789',
+                      alignItems: 'center',
+                      borderRadius: 250,
+                      padding: spacing * 10,
+                      marginHorizontal: spacing,
+                      transform: [{ translateY }]
+                    }}>
+                      {item.photoUrl !== undefined
+                        ? <Image style={styles.image} source={{uri: item.photoUrl}}/>
+                        : item.party.includes('Democratic Party')
+                          ? <Image style={styles.image} source={{uri: 'http://bioguide.congress.gov/bioguide/photo/H/H001075.jpg'}} />
+                          : <Image style={styles.image} source={gop} />
+                      }
+                    </Animated.View>
+                    : <Animated.View style={{
+                      backgroundColor: '#C1292E',
+                      alignItems: 'center',
+                      borderRadius: 250,
+                      padding: spacing * 10,
+                      marginHorizontal: spacing,
+                      transform: [{ translateY }]
+                    }}>
+                      {item.photoUrl !== undefined
+                        ? <Image style={styles.image} source={{uri: item.photoUrl}}/>
+                        : item.party.includes('Democratic Party')
+                          ? <Image style={styles.image} source={{uri: 'http://bioguide.congress.gov/bioguide/photo/H/H001075.jpg'}} />
+                          : <Image style={styles.image} source={gop} />
+                      }
+                    </Animated.View>
+                  }
+
 
                   <View style={{alignItems: 'center', margin: 3}}>
                     <Text style={{
