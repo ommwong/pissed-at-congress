@@ -2,6 +2,8 @@ import React from 'react';
 import { SafeAreaView, Text, TouchableOpacity, StyleSheet, View, Image } from 'react-native';
 import name from '../../assets/name.png';
 import address from '../../assets/address.png';
+import logo from '../../assets/logo.png';
+
 
 
 export default function Home ({ navigation }) {
@@ -14,21 +16,17 @@ export default function Home ({ navigation }) {
       }}>
 
         <View style={{
-          backgroundColor: 'dodgerblue',
-          flex: 1.75
+          backgroundColor: '#235789',
+          flex: 6,
+          flexDirection: 'row',
+          justifyContent: 'space-evenly',
+          alignItems: 'center'
         }}>
-          <Text>APP LOGO</Text>
+          <Image source={logo} style={{height: 325, width: 325}}></Image>
         </View>
 
         <View style={{
-          backgroundColor: 'gold',
-          flex: 4
-        }}>
-          <Text>SLOGAN</Text>
-        </View>
-
-        <View style={{
-          backgroundColor: 'tomato',
+          backgroundColor: '#235789',
           flex: 1,
           flexDirection: 'row',
           justifyContent: 'space-evenly',

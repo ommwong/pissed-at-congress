@@ -102,8 +102,18 @@ export default function AddressInput({ getReps, navigation }) {
             </TouchableOpacity>
         </View>
 
+          <View style={styles.navigation}>
+            <TouchableOpacity onPress={() => {
+            navigation.navigate('Home')
+            }}>
+              <Image source={address} style={{height: 45, width: 45}}></Image>
+            </TouchableOpacity>
+          </View>
+
       </View>
+
       <View style={styles.bottom}></View>
+
 
     </KeyboardAvoidingView>
 
@@ -120,7 +130,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#F1D302',
     paddingRight: 13,
     paddingLeft: 13,
-    height: 250
+    height: 250,
+    flex: 1
   },
   middle: {
     width: '100%',
@@ -130,14 +141,16 @@ const styles = StyleSheet.create({
     zIndex: 2,
     backgroundColor: 'transparent',
     paddingLeft: 30,
-    paddingRight: 30
+    paddingRight: 30,
+    flex: 2
   },
   bottom: {
     position: 'relative',
     height: '100%',
     paddingRight: 20,
     paddingLeft: 20,
-    backgroundColor: '#FDFFFC'
+    backgroundColor: '#FDFFFC',
+    flex: 1
   },
   textContainer: {
     color: '#020100',
@@ -176,5 +189,8 @@ const styles = StyleSheet.create({
   homeButton: {
     paddingTop: 5,
     paddingRight: 2
+  },
+  navigation: {
+    flex: 0.3
   }
 })
