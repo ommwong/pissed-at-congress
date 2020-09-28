@@ -44,13 +44,13 @@ export default function AddressInput({ getReps, navigation }) {
       <View style={styles.top}></View>
       <View style={styles.middle}>
 
-        <View style={styles.homeButton}>
+        {/* <View style={styles.homeButton}>
           <TouchableOpacity onPress={() => {
           navigation.navigate('Home')
           }}>
             <Image source={logo1} style={{height: 150, width: 150}}></Image>
           </TouchableOpacity>
-        </View>
+        </View> */}
 
         <Text style={styles.textContainer}> WHAT IS YOUR ADDRESS? </Text>
 
@@ -103,14 +103,6 @@ export default function AddressInput({ getReps, navigation }) {
             </TouchableOpacity>
         </View>
 
-          <View style={styles.navigation}>
-            <TouchableOpacity onPress={() => {
-            navigation.navigate('Home')
-            }}>
-              <Image source={address} style={{height: 45, width: 45}}></Image>
-            </TouchableOpacity>
-          </View>
-
       </View>
 
       <View style={styles.bottom}></View>
@@ -155,12 +147,13 @@ const styles = StyleSheet.create({
   },
   textContainer: {
     color: '#020100',
+    textTransform: 'uppercase',
+    letterSpacing: 7,
+    fontWeight: '900',
     fontSize: 20,
-    marginBottom: 20,
-    position: 'relative',
-    top: '2%',
-    alignSelf: 'center',
-    fontWeight: 'bold'
+    lineHeight: 25,
+    textAlign: 'center',
+    paddingTop: 101
   },
   formArea: {
     alignSelf: 'center',
@@ -179,10 +172,15 @@ const styles = StyleSheet.create({
     marginRight: 40
   },
   input: {
+    color: '#020100',
+    textTransform: 'uppercase',
     fontSize: 20,
     padding: 20,
     paddingLeft: 25,
-    color: '#020100'
+    color: '#020100',
+    letterSpacing: 4,
+    textAlign: 'center',
+    fontWeight: '400',
   },
   formItems: {
     marginTop: 25

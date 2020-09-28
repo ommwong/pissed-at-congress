@@ -8,8 +8,8 @@ const { width, height } = Dimensions.get('window');
 
 export default function RepList ({ reps, navigation }) {
 
-  const spacing = 20;
-  const item_size = width * .9;
+  const spacing = 5;
+  const item_size = width * 1;
   const scrollX = useRef(new Animated.Value(0)).current;
 
   return (
@@ -59,8 +59,8 @@ export default function RepList ({ reps, navigation }) {
                   <Animated.View style={{
                     backgroundColor: '#FDFFFC',
                     alignItems: 'center',
-                    borderRadius: 40,
-                    padding: spacing * 2.3,
+                    borderRadius: 20,
+                    padding: spacing * 2,
                     marginHorizontal: spacing,
                     transform: [{ translateY }]
                   }}>
@@ -74,11 +74,13 @@ export default function RepList ({ reps, navigation }) {
 
                   <View style={{alignItems: 'center', margin: 3}}>
                     <Text style={{
-                      fontSize: 20,
-                      padding: 20,
+                      color: '#020100',
                       textTransform: 'uppercase',
-                      fontWeight: 'bold',
-                      color: '#020100'
+                      letterSpacing: 7,
+                      fontWeight: '900',
+                      fontSize: 20,
+                      lineHeight: 50,
+                      textAlign: 'center'
                       }}>
                         {item.name}
                     </Text>
@@ -102,9 +104,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#FDFFFC'
   },
   image: {
-    height: 300,
-    width: 300,
-    borderRadius: 25,
+    height: 270,
+    width: 270,
+    borderRadius: 150,
     margin: 0,
     marginBottom: 10
   },

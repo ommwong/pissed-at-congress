@@ -4,6 +4,7 @@ import * as Linking from 'expo-linking';
 import * as Sharing from 'expo-sharing'; //SHARING
 import dem from '../../assets/dem.png';
 import gop from '../../assets/gop.png';
+import logo1 from '../../assets/logo1.png';
 
 const callPhone = (number) => {
   Linking.openURL(`tel:+1${number}`)
@@ -25,6 +26,14 @@ export default function Rep ( props ) {
 
   return (
     <View style={styles.container}>
+{/*
+      <View style={styles.homeButton}>
+        <TouchableOpacity onPress={() => {
+        props.navigation.navigate('Home')
+        }}>
+          <Image source={logo1} style={styles.homeButton}></Image>
+        </TouchableOpacity>
+      </View> */}
 
         <TouchableOpacity onPress={() => {setCurrentCard('name')}} style={styles.cardContainer} activeOpacity={0.9}>
           <View style={[styles.card, {backgroundColor: '#235789'}]}>
@@ -133,7 +142,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   heading: {
-    fontSize: 25,
+    fontSize: 30,
     fontWeight: '900',
     textTransform: 'uppercase',
     letterSpacing: 7
@@ -152,13 +161,14 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
     letterSpacing: 7,
     fontWeight: '900',
-    fontSize: 24,
-    lineHeight: 50
+    fontSize: 30,
+    lineHeight: 50,
+    textAlign: 'center'
   },
   photo: {
-    height: 150,
-    width: 150,
-    borderRadius: 100
+    height: 270,
+    width: 270,
+    borderRadius: 150
   },
   phone: {
     color: '#FDFFFC',
@@ -173,5 +183,13 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center'
+  },
+  homeButton: {
+    // position: 'relative',
+    // backgroundColor: '#235789',
+    // flexDirection: 'column',
+    // alignItems: 'center',
+    // justifyContent: 'center',
+
   }
 })

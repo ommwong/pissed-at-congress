@@ -1,10 +1,8 @@
 import React, { useState, useRef } from 'react';
-import { StyleSheet, Text, SafeAreaView, TextInput, TouchableOpacity, FlatList, Image, View, Animated, Dimensions } from 'react-native'
-import { handleSearchName } from '../../handleSearchName';
+import { StyleSheet, Text, SafeAreaView, TextInput, TouchableOpacity, Image, View, Animated, Dimensions } from 'react-native'
 import logo1 from '../../assets/logo1.png';
 
 const { width, height } = Dimensions.get('window');
-
 
 export default function SenateSearch ({ senators, navigation }) {
 
@@ -31,13 +29,13 @@ export default function SenateSearch ({ senators, navigation }) {
 
     <SafeAreaView style={styles.container}>
 
-      <View style={styles.homeButton}>
+      {/* <View style={styles.homeButton}>
         <TouchableOpacity onPress={() => {
         navigation.navigate('Home')
         }}>
           <Image source={logo1} style={{height: 100, width: 100}}></Image>
         </TouchableOpacity>
-      </View>
+      </View> */}
 
       <View style={styles.input}>
         <TextInput
@@ -150,9 +148,9 @@ const styles = StyleSheet.create({
 
   },
   image: {
-    height: 250,
-    width: 250,
-    borderRadius: 25,
+    height: 270,
+    width: 270,
+    borderRadius: 150,
     margin: 0,
     marginBottom: 10
   },
