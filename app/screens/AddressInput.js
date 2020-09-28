@@ -97,7 +97,7 @@ export default function AddressInput({ getReps, navigation }) {
              ? <Button
               title='CONTINUE'
               onPress = {(input) => {handleSubmit(input)}}
-              color="purple"/>
+              color="#020100"/>
               : null }
             </TouchableOpacity>
         </View>
@@ -117,7 +117,7 @@ const styles = StyleSheet.create({
   },
   top: {
     position: 'relative',
-    backgroundColor: 'coral',
+    backgroundColor: '#F1D302',
     paddingRight: 13,
     paddingLeft: 13,
     height: 250
@@ -137,10 +137,10 @@ const styles = StyleSheet.create({
     height: '100%',
     paddingRight: 20,
     paddingLeft: 20,
-    backgroundColor: 'pink'
+    backgroundColor: '#FDFFFC'
   },
   textContainer: {
-    color: '#fff',
+    color: '#020100',
     fontSize: 20,
     marginBottom: 20,
     position: 'relative',
@@ -151,27 +151,27 @@ const styles = StyleSheet.create({
   formArea: {
     alignSelf: 'center',
     width: '100%',
-    backgroundColor: '#fff',
+    backgroundColor: '#FDFFFC',
     top: '3%',
     paddingBottom: 40,
     paddingTop: 5,
     borderRadius: 25,
   },
   continue: {
-    backgroundColor:'green',
+    backgroundColor:'#F1D302',
     borderRadius: 45,
-    borderColor: 'green',
+    borderColor: '#F1D302',
     marginLeft: 40,
     marginRight: 40
   },
   input: {
     fontSize: 20,
     padding: 20,
-    paddingLeft: 25
+    paddingLeft: 25,
+    color: '#020100'
   },
   formItems: {
-    marginTop: 25,
-    borderBottomColor: 'yellow'
+    marginTop: 25
   },
   homeButton: {
     paddingTop: 5,

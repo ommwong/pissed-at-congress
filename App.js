@@ -6,7 +6,7 @@ import RepList from './app/components/RepList';
 import SenateSearch from './app/screens/SenateSearch';
 import HouseSearch from './app/screens/HouseSearch';
 import Loading from './app/components/Loading';
-import PickerComponent from './app/screens/PickerComponent'
+import PickerComponent from './app/screens/PickerComponent';
 import { getRepByAddress, getSenate, getHouse } from './ApiService';
 import { NavigationContainer, StackActions } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -24,6 +24,7 @@ export default function App() {
     getSenate()
     .then(list => list.results.map(senate => setSenators(senate.members)))
   }, [])
+
 
   useEffect(() => {
     getHouse()
@@ -61,7 +62,7 @@ export default function App() {
 
         <Stack.Screen name="HouseSearch" component={HouseSearch} /> */}
 
-        <Stack.Screen name="AddressInput">
+        <Stack.Screen name="AddressInput" options={{headerShown: false}}>
           {props => (
             <AddressInput getReps={getReps} {...props} />
           )}

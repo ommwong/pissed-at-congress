@@ -30,6 +30,7 @@ export default function RepList ({ reps, navigation }) {
         )}
         scrollEventThrottle={15}
         renderItem={({item, index}) => {
+
           const inputRange= [
             (index - 1) * item_size, //previous
             index * item_size,       //current
@@ -46,7 +47,7 @@ export default function RepList ({ reps, navigation }) {
 
                 <View style={{ width: item_size }}>
                   <Animated.View style={{
-                    backgroundColor: 'gold',
+                    backgroundColor: '#FDFFFC',
                     alignItems: 'center',
                     borderRadius: 40,
                     padding: spacing * 2.3,
@@ -61,12 +62,13 @@ export default function RepList ({ reps, navigation }) {
                     }
                   </Animated.View>
 
-                  <View style={{alignItems: 'center'}}>
+                  <View style={{alignItems: 'center', margin: 3}}>
                     <Text style={{
                       fontSize: 20,
                       padding: 20,
                       textTransform: 'uppercase',
-                      fontWeight: 'bold'
+                      fontWeight: 'bold',
+                      color: '#020100'
                       }}>
                         {item.name}
                     </Text>
@@ -86,11 +88,14 @@ export default function RepList ({ reps, navigation }) {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+    backgroundColor: '#FDFFFC'
   },
   image: {
-    height: 250,
-    width: 250,
-    borderRadius: 25
+    height: 300,
+    width: 300,
+    borderRadius: 25,
+    margin: 0,
+    marginBottom: 10
   }
 })
