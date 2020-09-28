@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Text, TouchableOpacity, View, Image, StyleSheet } from 'react-native';
 import * as Linking from 'expo-linking';
 import * as Sharing from 'expo-sharing'; //SHARING
@@ -20,111 +20,95 @@ const shareRep = () => {
 
 export default function Rep ( props ) {
 
-  const rep = props.route.params;
+  const [ currentCard, setCurrentCard ] = useState(null);
 
-  const data = [
-    {
-      bg: 'dodgerblue',
-      color: 'red',
-      category: 'Name',
-    },
-    {
-      bg: 'coral',
-      color: 'green',
-      category: 'Info',
-    },
-    {
-      bg: 'red',
-      color: 'black',
-      category: 'Take Action',
-    },
-  ]
+  const rep = props.route.params;
 
   return (
     <View style={styles.container}>
+
       <StatusBar hidden/>
 
-
-        <TouchableOpacity onPress={() => {}} style={styles.cardContainer}>
-          <View style={[styles.card, {backgroundColor: 'coral'}]}>
-            <Text style={[styles.heading, {color: 'black'}]}>
+        <TouchableOpacity onPress={() => {setCurrentCard('name')}} style={styles.cardContainer} activeOpacity={0.9}>
+          <View style={[styles.card, {backgroundColor: '#235789'}]}>
+            <Text style={[styles.heading, {color: '#FDFFFC'}]}>
               Name
             </Text>
-            <View style={styles.subCategory}>
+            {currentCard === 'name' && <View style={styles.subCategory}>
               <View>
               {rep.id
                 ? <View>
-                    <Image style={{height: 200, width: 200}} source={{uri: `http://bioguide.congress.gov/bioguide/photo/${rep.id.charAt(0)}/${rep.id}.jpg`}} />
-                    <Text> {rep.first_name} {rep.last_name} </Text>
+                    <Image style={styles.photo} source={{uri: `http://bioguide.congress.gov/bioguide/photo/${rep.id.charAt(0)}/${rep.id}.jpg`}} />
+                    <Text style={styles.info_name}> {rep.first_name} {rep.last_name} </Text>
                   </View>
                 : <View>
                     {rep.photoUrl !== undefined
-                    ? <Image style={{height: 200, width: 200}} source={{uri: rep.photoUrl}} />
+                    ? <Image style={styles.photo} source={{uri: rep.photoUrl}} />
                     : rep.party.includes('Democratic Party')
-                        ? <Image style={{height: 200, width: 200}} source={dem} />
-                        : <Image style={{height: 200, width: 200}} source={gop} />
+                        ? <Image style={styles.photo} source={dem} />
+                        : <Image style={styles.photo} source={gop} />
                     }
-                    <Text> {rep.name} </Text>
+                    <Text style={styles.info_name}> {rep.name} </Text>
                   </View>
               }
               </View>
-            </View>
+            </View>}
           </View>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => {}} style={styles.cardContainer}>
-          <View style={[styles.card, {backgroundColor: 'dodgerblue'}]}>
-            <Text style={[styles.heading, {color: 'black'}]}>
+        <TouchableOpacity onPress={() => {setCurrentCard('info')}} style={styles.cardContainer} activeOpacity={0.9}>
+          <View style={[styles.card, {backgroundColor: '#F1D302'}]}>
+            <Text style={[styles.heading, {color: '#020100'}]}>
               Info
             </Text>
-            <View style={styles.subCategory}>
+            {currentCard === 'info' && <View style={styles.subCategory}>
               <View>
               {rep.id
                 ? <View>
                     {rep.party === 'D'
-                      ? <Text> Democratic Party, {rep.state} </Text>
-                      : <Text> Republican Party, {rep.state} </Text>
+                      ? <Text style={styles.info_text}> Democratic Party, {rep.state} </Text>
+                      : <Text style={styles.info_text}> Republican Party, {rep.state} </Text>
                     }
                     {rep.chamber === 'House'
-                      ? <Text> US House of Representatives </Text>
-                      : <Text> US Senate </Text>
+                      ? <Text style={styles.info_text}> US House of Representatives </Text>
+                      : <Text style={styles.info_text}> US Senate </Text>
                     }
-                    <Text> Next election: {rep.next_election} </Text>
+                    <Text style={styles.info_text}> Next election: {rep.next_election} </Text>
                   </View>
                 : <View>
                     {rep.party === 'Democratic Party'
-                      ? <Text> Democratic Party, CA </Text>
-                      : <Text> Republican Party, CA </Text>
+                      ? <Text style={styles.info_text}> Democratic Party, CA </Text>
+                      : <Text style={styles.info_text}> Republican Party, CA </Text>
                     }
                     {rep.urls.includes('house')
-                      ? <Text> US House of Representatives </Text>
-                      : <Text> US Senate </Text>
+                      ? <Text style={styles.info_text}> US House of Representatives </Text>
+                      : <Text style={styles.info_text}> US Senate </Text>
                     }
                 </View>
               }
               </View>
-            </View>
+            </View>}
           </View>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => {}} style={styles.cardContainer}>
-          <View style={[styles.card, {backgroundColor: 'red'}]}>
-            <Text style={[styles.heading, {color: 'black'}]}>
+        <TouchableOpacity onPress={() => {setCurrentCard('takeAction')}} style={styles.cardContainer} activeOpacity={0.9}>
+          <View style={[styles.card, {backgroundColor: '#C1292E'}]}>
+            <Text style={[styles.heading, {color: '#FDFFFC'}]}>
               Take Action
             </Text>
-            <View style={styles.subCategory}>
+            {currentCard === 'takeAction' && <View style={[styles.subCategory]}>
               <View>
               {rep.id
                 ? <View>
-                    <Text onPress={() => {callPhone(rep.phone)}}> {rep.phone} </Text>
+                    <Text onPress={() => {callPhone(rep.phone)}} style={{color: '#FDFFFC'}}> {rep.phone} </Text>
                   </View>
 
                 : <View>
-                    <Text onPress={() => {callPhone(rep.phones)}}> {rep.phones} </Text>
+                    <Text onPress={() => {callPhone(rep.phones)}} style={{color: '#FDFFFC'}}> {rep.phones} </Text>
                 </View>
               }
               </View>
-            </View>
+            </View>}
           </View>
         </TouchableOpacity>
 
@@ -152,6 +136,29 @@ const styles = StyleSheet.create({
     fontSize: 40,
     fontWeight: '900',
     textTransform: 'uppercase',
-    letterSpacing: 2
+    letterSpacing: 7
+  },
+  info_text:{
+    color: '#020100',
+    textTransform: 'uppercase',
+    letterSpacing: 7,
+    fontWeight: '900',
+    fontSize: 15,
+    lineHeight: 50,
+    textAlign: 'center'
+  },
+  info_name: {
+    color: '#FDFFFC',
+    textTransform: 'uppercase',
+    letterSpacing: 7,
+    fontWeight: '900',
+    fontSize: 20,
+    lineHeight: 50,
+    textAlign: 'center'
+  },
+  photo: {
+    height: 150,
+    width: 150,
+    borderRadius: 100
   }
 })

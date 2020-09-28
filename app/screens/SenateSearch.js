@@ -95,11 +95,13 @@ export default function SenateSearch ({ senators, navigation }) {
 
                     <View style={{alignItems: 'center', margin: 3}}>
                       <Text style={{
-                        fontSize: 20,
-                        padding: 20,
+                        color: '#020100',
                         textTransform: 'uppercase',
-                        fontWeight: 'bold',
-                        color: '#020100'
+                        letterSpacing: 7,
+                        fontWeight: '900',
+                        fontSize: 20,
+                        lineHeight: 50,
+                        textAlign: 'center'
                         }}>
                           {item.first_name} {item.last_name}
                       </Text>
