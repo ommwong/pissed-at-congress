@@ -35,6 +35,10 @@ export default function App() {
       .then(results => setReps(results.officials))
   };
 
+  if (senators.length === 0) {
+    return <Loading />
+  };
+
   return (
     <NavigationContainer>
       <Stack.Navigator>

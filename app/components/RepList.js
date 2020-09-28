@@ -29,27 +29,37 @@ export default function RepList ({ reps, navigation }) {
           { useNativeDriver: true }
         )}
         scrollEventThrottle={15}
-        renderItem={({item}) => {
+        renderItem={({item, index}) => {
+          const inputRange= [
+            (index - 1) * item_size, //previous
+            index * item_size,       //current
+            (index + 1) * item_size  //next
+          ];
+          const translateY = scrollX.interpolate({
+            inputRange,
+            outputRange: [0, -50, 0]
+          })
           return (
           <View>
             <View >
             <TouchableOpacity onPress={() => navigation.navigate('Rep', item )}>
 
                 <View style={{ width: item_size }}>
-                  <View style={{
+                  <Animated.View style={{
                     backgroundColor: 'gold',
                     alignItems: 'center',
                     borderRadius: 40,
                     padding: spacing * 2.3,
-                    marginHorizontal: spacing
+                    marginHorizontal: spacing,
+                    transform: [{ translateY }]
                   }}>
                     {item.photoUrl !== undefined
-                      ? <Image style={{height: 250, width: 250, borderRadius: 25}} source={{uri: item.photoUrl}}/>
+                      ? <Image style={styles.image} source={{uri: item.photoUrl}}/>
                       : item.party.includes('Democratic Party')
-                        ? <Image style={{height: 250, width: 250, borderRadius: 25}} source={dem} />
-                        : <Image style={{height: 250, width: 250, borderRadius: 25}} source={gop} />
+                        ? <Image style={styles.image} source={dem} />
+                        : <Image style={styles.image} source={gop} />
                     }
-                  </View>
+                  </Animated.View>
 
                   <View style={{alignItems: 'center'}}>
                     <Text style={{
@@ -77,5 +87,10 @@ export default function RepList ({ reps, navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1
+  },
+  image: {
+    height: 250,
+    width: 250,
+    borderRadius: 25
   }
 })
