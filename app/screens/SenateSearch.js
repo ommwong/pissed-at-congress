@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import { StyleSheet, Text, SafeAreaView, TextInput, TouchableOpacity, Image, View, Animated, Dimensions } from 'react-native'
 import logo1 from '../../assets/logo1.png';
 
+
 const { width, height } = Dimensions.get('window');
 
 export default function SenateSearch ({ senators, navigation }) {
@@ -37,79 +38,91 @@ export default function SenateSearch ({ senators, navigation }) {
         </TouchableOpacity>
       </View> */}
 
-      <View style={styles.input}>
-        <TextInput
-          placeholder='Enter a name'
-          value={searchResult}
-          autoCorrect={false}
-          onChangeText={input => {handleSearchName(input)}}
-          >
-        </TextInput>
-      </View>
+          <View>
+            <TextInput
+              placeholder='Enter a name'
+              value={searchResult}
+              autoCorrect={false}
+              onChangeText={input => {handleSearchName(input)}}
+              >
+            </TextInput>
+          </View>
 
-      <Animated.FlatList
-        showsHorizontalScrollIndicator={false}
-        data={searchResult}
-        keyExtractor={rep => rep.id}
-        horizontal
-        contentContainerStyle={{
-          alignItems: 'center'
-        }}
-        snapToInterval={item_size}
-        decelerationRate={0}
-        bounces={false}
-        onScroll={Animated.event(
-          [{ nativeEvent: { contentOffset: { x: scrollX } } }],
-          { useNativeDriver: true }
-        )}
-        scrollEventThrottle={15}
-        renderItem={({item, index}) => {
-          const inputRange= [
-            (index - 1) * item_size, //previous
-            index * item_size,       //current
-            (index + 1) * item_size  //next
-          ];
-          const translateY = scrollX.interpolate({
-            inputRange,
-            outputRange: [0, -50, 0]
-          })
+        <Animated.FlatList
+          showsHorizontalScrollIndicator={false}
+          data={searchResult}
+          keyExtractor={rep => rep.id}
+          horizontal
+          contentContainerStyle={{
+            alignItems: 'center'
+          }}
+          snapToInterval={item_size}
+          decelerationRate={0}
+          bounces={false}
+          onScroll={Animated.event(
+            [{ nativeEvent: { contentOffset: { x: scrollX } } }],
+            { useNativeDriver: true }
+          )}
+          scrollEventThrottle={15}
+          renderItem={({item, index}) => {
 
-          return (
-            <View>
+            const translateY = scrollX.interpolate({
+              inputRange: [
+                (index - 1) * item_size, //previous
+                index * item_size,       //current
+                (index + 1) * item_size  //next,
+              ],
+              outputRange: [75, -50, 75]
+            })
+
+            return (
               <View>
-                <TouchableOpacity onPress={() => navigation.navigate('Rep', item)}>
-                  <View style={{ width: item_size }}>
+                <View>
+                  <TouchableOpacity onPress={() => navigation.navigate('Rep', item)}>
+                    <View style={{ width: item_size }}>
 
-                    <Animated.View style={{
-                      backgroundColor: '#FDFFFC',
-                      alignItems: 'center',
-                      borderRadius: 20,
-                      padding: spacing * 2,
-                      marginHorizontal: spacing,
-                      transform: [{ translateY }]
-                    }}>
-                      <Image style={styles.image} source={{uri: `http://bioguide.congress.gov/bioguide/photo/${item.id.charAt(0)}/${item.id}.jpg`}} />
-                    </Animated.View>
+                      {item.party === 'D'
+                      ? <Animated.View style={{
+                        backgroundColor: '#235789',
+                        borderRadius: 250,
+                        alignItems: 'center',
+                        padding: spacing * 10,
+                        marginHorizontal: spacing,
+                        transform: [{ translateY }]
+                      }}>
+                        <Image style={styles.image} source={{uri: `http://bioguide.congress.gov/bioguide/photo/${item.id.charAt(0)}/${item.id}.jpg`}} />
+                      </Animated.View>
 
-                    <View style={{alignItems: 'center', margin: 3}}>
-                      <Text style={{
-                        color: '#020100',
-                        textTransform: 'uppercase',
-                        letterSpacing: 7,
-                        fontWeight: '900',
-                        fontSize: 20,
-                        lineHeight: 50,
-                        textAlign: 'center'
-                        }}>
-                          {item.first_name} {item.last_name}
-                      </Text>
+                      : <Animated.View style={{
+                        backgroundColor: '#C1292E',
+                        borderRadius: 250,
+                        alignItems: 'center',
+                        padding: spacing * 10,
+                        marginHorizontal: spacing,
+                        transform: [{ translateY }]
+                      }}>
+                        <Image style={styles.image} source={{uri: `http://bioguide.congress.gov/bioguide/photo/${item.id.charAt(0)}/${item.id}.jpg`}} />
+                      </Animated.View>
+                      }
+
+                      <View style={{alignItems: 'center', margin: 3}}>
+                        <Text style={{
+                          color: '#020100',
+                          textTransform: 'uppercase',
+                          letterSpacing: 7,
+                          fontWeight: '900',
+                          fontSize: 25,
+                          textAlign: 'center'
+                          }}>
+                            {item.first_name} {item.last_name}
+                        </Text>
+                      </View>
+
                     </View>
-
-                  </View>
-                </TouchableOpacity>
-              </View>
-            </View>)
-        }}
+                  </TouchableOpacity>
+                </View>
+              </View>)
+          }}
       />
 
     </SafeAreaView>
@@ -119,7 +132,8 @@ export default function SenateSearch ({ senators, navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FDFFFC'
+    backgroundColor: '#FDFFFC',
+    justifyContent: 'center'
   },
   homeButton: {
   },
@@ -148,10 +162,11 @@ const styles = StyleSheet.create({
 
   },
   image: {
-    height: 270,
-    width: 270,
+    height: 260,
+    width: 260,
     borderRadius: 150,
     margin: 0,
     marginBottom: 10
-  },
+  }
+
 })

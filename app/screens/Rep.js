@@ -4,7 +4,7 @@ import * as Linking from 'expo-linking';
 import * as Sharing from 'expo-sharing'; //SHARING
 import dem from '../../assets/dem.png';
 import gop from '../../assets/gop.png';
-import logo1 from '../../assets/logo1.png';
+import Modal from 'react-native-modal';
 
 const callPhone = (number) => {
   Linking.openURL(`tel:+1${number}`)
@@ -112,16 +112,16 @@ export default function Rep ( props ) {
                     <Text onPress={() => {callPhone(rep.phone)}} style={styles.phone}> {rep.phone} </Text>
                   </View>
 
+
                 : <View>
                     <Text onPress={() => {callPhone(rep.phones)}} style={styles.phone}> {rep.phones} </Text>
                 </View>
               }
+
               </View>
             </View>}
           </View>
         </TouchableOpacity>
-
-
 
     </View>
   )
@@ -175,7 +175,7 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
     letterSpacing: 7,
     fontWeight: '900',
-    fontSize: 20,
+    fontSize: 17,
     lineHeight: 50,
     textAlign: 'center'
   },

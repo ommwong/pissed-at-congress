@@ -15,13 +15,13 @@ export default function RepList ({ reps, navigation }) {
   return (
     <SafeAreaView style={styles.container}>
 
-      <View style={styles.homeButton}>
+      {/* <View style={styles.homeButton}>
         <TouchableOpacity onPress={() => {
         navigation.navigate('AddressInput')
         }}>
           <Image source={logo1} style={{height: 100, width: 100}}></Image>
         </TouchableOpacity>
-      </View>
+      </View> */}
 
       <Animated.FlatList
         showsHorizontalScrollIndicator={false}
@@ -48,7 +48,7 @@ export default function RepList ({ reps, navigation }) {
           ];
           const translateY = scrollX.interpolate({
             inputRange,
-            outputRange: [0, -50, 0]
+            outputRange: [100, -75, 100]
           })
           return (
           <View>
@@ -67,7 +67,7 @@ export default function RepList ({ reps, navigation }) {
                     {item.photoUrl !== undefined
                       ? <Image style={styles.image} source={{uri: item.photoUrl}}/>
                       : item.party.includes('Democratic Party')
-                        ? <Image style={styles.image} source={dem} />
+                        ? <Image style={styles.image} source={{uri: 'http://bioguide.congress.gov/bioguide/photo/H/H001075.jpg'}} />
                         : <Image style={styles.image} source={gop} />
                     }
                   </Animated.View>
