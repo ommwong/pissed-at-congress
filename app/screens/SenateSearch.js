@@ -11,8 +11,8 @@ export default function SenateSearch ({ senators, navigation }) {
   const [ searchResult, setSearchResult ] = useState([]);
   const [ query, setQuery ] = useState('');
 
-  const spacing = 20;
-  const item_size = width * .9;
+  const spacing = 5;
+  const item_size = width * 1;
   const scrollX = useRef(new Animated.Value(0)).current;
 
   function handleSearchName (input) {
@@ -33,7 +33,7 @@ export default function SenateSearch ({ senators, navigation }) {
 
       <View style={styles.homeButton}>
         <TouchableOpacity onPress={() => {
-        navigation.navigate('AddressInput')
+        navigation.navigate('Home')
         }}>
           <Image source={logo1} style={{height: 100, width: 100}}></Image>
         </TouchableOpacity>
@@ -85,12 +85,12 @@ export default function SenateSearch ({ senators, navigation }) {
                     <Animated.View style={{
                       backgroundColor: '#FDFFFC',
                       alignItems: 'center',
-                      borderRadius: 40,
-                      padding: spacing * 2.3,
+                      borderRadius: 20,
+                      padding: spacing * 2,
                       marginHorizontal: spacing,
                       transform: [{ translateY }]
                     }}>
-                      <Image style={{height: 200, width: 200}} source={{uri: `http://bioguide.congress.gov/bioguide/photo/${item.id.charAt(0)}/${item.id}.jpg`}} />
+                      <Image style={styles.image} source={{uri: `http://bioguide.congress.gov/bioguide/photo/${item.id.charAt(0)}/${item.id}.jpg`}} />
                     </Animated.View>
 
                     <View style={{alignItems: 'center', margin: 3}}>
@@ -108,9 +108,7 @@ export default function SenateSearch ({ senators, navigation }) {
                   </View>
                 </TouchableOpacity>
               </View>
-            </View>
-
-            )
+            </View>)
         }}
       />
 
@@ -130,8 +128,8 @@ const styles = StyleSheet.create({
   },
   input: {
     fontSize: 20,
-    padding: 20,
-    paddingLeft: 25,
+    padding: 5,
+    paddingLeft: 5,
     color: '#020100'
   },
   searchArea: {
@@ -139,14 +137,21 @@ const styles = StyleSheet.create({
     width: '100%',
     backgroundColor: '#FDFFFC',
     top: '3%',
-    paddingBottom: 40,
+    paddingBottom: 20,
     paddingTop: 5,
     borderRadius: 25,
   },
   searchBox: {
-    marginTop: 25
+    marginTop: 20
   },
   searchItem: {
 
-  }
+  },
+  image: {
+    height: 250,
+    width: 250,
+    borderRadius: 25,
+    margin: 0,
+    marginBottom: 10
+  },
 })
