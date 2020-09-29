@@ -15,5 +15,5 @@ app.use(router);
 
 const port = 3000;
 app.listen(port, () => {
-  console.log(`Server running on http://localhost:${port}/ 👍👍👍`);
+  console.log(`JWT Server running on http://localhost:${port}/ 👍👍👍`);
 })
