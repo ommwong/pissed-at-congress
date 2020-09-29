@@ -5,10 +5,11 @@ import Rep from './app/screens/Rep';
 import RepList from './app/components/RepList';
 import SenateSearch from './app/screens/SenateSearch';
 import HouseSearch from './app/screens/HouseSearch';
+import Login from './app/screens/Login'
 import Loading from './app/components/Loading';
 import Register from './app/screens/Register';
 // import PickerComponent from './app/screens/PickerComponent';
-import { getRepByAddress, getSenate, getHouse, register } from './ApiService';
+import { getRepByAddress, getSenate, getHouse, register, login } from './ApiService';
 import { NavigationContainer, StackActions } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
@@ -20,6 +21,7 @@ export default function App() {
   const [ reps, setReps ] = useState([]);
   const [ senators, setSenators ] = useState([]);
   const [ houseReps, setHouseReps ] = useState([]);
+  const [ isAuthenticated, setIsAuthenticated ] = useState(false);
 
   useEffect(() => {
     getSenate()
@@ -45,6 +47,11 @@ export default function App() {
       .then(event => console.log('successful'))
   }
 
+  const loginUser = (username, password) => {
+    login({username, password})
+      .then(event => console.log('Login successful'))
+  }
+
   return (
     <NavigationContainer>
       <Stack.Navigator>
@@ -63,10 +70,6 @@ export default function App() {
           )}
         </Stack.Screen>
 
-        {/* <Stack.Screen name="SenateSearch" component={SenateSearch} />
-
-        <Stack.Screen name="HouseSearch" component={HouseSearch} /> */}
-
         <Stack.Screen name="AddressInput" options={{headerShown: false}}>
           {props => (
             <AddressInput getReps={getReps} {...props} />
@@ -75,7 +78,13 @@ export default function App() {
 
         <Stack.Screen name="Register" options={{headerShown: false}}>
           {props => (
-            <Register registerUser={registerUser} {...props} />
+            <Register registerUser={registerUser} setIsAuthenticated={setIsAuthenticated} {...props} />
+          )}
+        </Stack.Screen>
+
+        <Stack.Screen name="Login" options={{headerShown: false}}>
+          {props => (
+            <Login loginUser={loginUser} setIsAuthenticated={setIsAuthenticated} {...props} />
           )}
         </Stack.Screen>
 

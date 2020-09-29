@@ -55,3 +55,17 @@ export function register (name, username, password) {
     .then((res) => res.json())
     .catch((err) => console.log(err));
 }
+
+export function login (username, password) {
+  return fetch(`${BASE_URL}/login`, {
+    method: 'POST',
+    credentials: 'include',
+    mode: 'cors',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(username, password),
+  })
+    .then((res) => res.json())
+    .catch((err) => console.log(err));
+}

@@ -1,34 +1,44 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, Image, TextInput, Button, TouchableOpacity, View, KeyboardAvoidingView } from 'react-native';
+import { StyleSheet, Text, Image, TextInput, Button, TouchableOpacity, View, KeyboardAvoidingView, ImagePropTypes } from 'react-native';
 
-export default function Register({ registerUser }) {
+export default function Register({ registerUser, setIsAuthenticated }) {
 
   const [name, setName] = useState('');
-  const [userName, setUserName] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  function handleChange () {
+  function handleChange (input, stateName) {
     switch(stateName) {
       case 'name' :
-        return name(input)
-      case 'userName' :
-        return userName(input)
+        return setName(input)
+      case 'email' :
+        return setEmail(input)
       case 'password' :
-        return password(input)
+        return setPassword(input)
     }
   }
 
-  function handleSubmit (input) {
-    registerUser(name, username, password)
+  async function handleSubmit (input) {
+    const res = await registerUser(name, email, password)
 
-    if (input) {
+    if (res.error && input) {
+      alert('Something went wrong');
       name('');
-      username('');
+      email('');
       password('');
     }
-    //alert user// navigate to home
+    const { accessToken } = res;
+    localStorage.setItem('accessToken', accessToken);
+    setIsAuthenticated(true);
+
     navigation.navigate('Home');
   }
+
+  const validateForm = () => {
+    return (
+      !name || !email || !password
+    );
+  };
 
   return (
 
@@ -52,7 +62,7 @@ export default function Register({ registerUser }) {
 
               <TextInput
                 style={styles.input}
-                placeholder='email'
+                placeholder='Email'
                 value={email}
                 onChangeText={text => {handleChange(text, 'email')}}
               >
@@ -60,7 +70,7 @@ export default function Register({ registerUser }) {
 
               <TextInput
                 style={styles.input}
-                placeholder='password'
+                placeholder='Password'
                 secureTextEntry={true}
                 value={password}
                 onChangeText={text => {handleChange(text, 'password')}}
@@ -72,9 +82,10 @@ export default function Register({ registerUser }) {
 
         <View style={styles.continue}>
           <TouchableOpacity>
-            { name, user, password !== ''
+            { name, email, password !== ''
              ? <Button
-              title='CONTINUE'
+              title='REGISTER'
+              disabled={validateForm()}
               onPress = {(input) => {handleSubmit(input)}}
               color="#020100"
               />
@@ -122,7 +133,8 @@ const styles = StyleSheet.create({
     paddingRight: 20,
     paddingLeft: 20,
     backgroundColor: '#FDFFFC',
-    flex: 1
+    flex: 1,
+    backgroundColor: '#C1292E'
   },
   textContainer: {
     color: '#020100',
@@ -138,10 +150,10 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     width: '100%',
     backgroundColor: '#FDFFFC',
-    top: '3%',
+    top: '9%',
     paddingBottom: 40,
     paddingTop: 5,
-    borderRadius: 25,
+    borderRadius: 25
   },
   continue: {
     backgroundColor:'#F1D302',

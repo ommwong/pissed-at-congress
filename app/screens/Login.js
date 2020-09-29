@@ -1,40 +1,37 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, Image, TextInput, Button, TouchableOpacity, View, KeyboardAvoidingView } from 'react-native';
-import address from '../../assets/address.png';
-import logo1 from '../../assets/logo1.png';
 
+export default function Login({ loginUser, setIsAuthenticated }) {
 
-export default function AddressInput({ getReps, navigation }) {
-
-  const [line1, setLine1] = useState('');
-  const [city, setCity] = useState('');
-  const [state, setState] = useState('');
-  const [zip, setZip] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   function handleChange (input, stateName) {
     switch(stateName) {
-      case 'line1' :
-        return setLine1(input)
-      case 'city' :
-        return setCity(input)
-      case 'state' :
-        return setState(input)
-      case 'zip' :
-        return setZip(input)
+      case 'email' :
+        return setEmail(input)
+      case 'password' :
+        return setPassword(input)
     }
   }
 
-  function handleSubmit (input) {
-    getReps(line1, city, state, zip)
+  async function handleSubmit (input) {
+    const res = await loginUser(email, password);
 
-    if (input) {
-      setLine1('');
-      setCity('');
-      setState('');
-      setZip('');
+    if (res. error && input) {
+      alert(`Wrong email or password!`)
+      email('');
+      password('');
     }
-    navigation.navigate('RepList');
+    const { accessToken } = res;
+    localStorage.setItem('accessToken', accessToken);
+    setIsAuthenticated(true);
+    navigation.navigate('Home');
   }
+
+  const validateForm = () => {
+    return !email || !password;
+  };
 
   return (
 
@@ -43,40 +40,25 @@ export default function AddressInput({ getReps, navigation }) {
       <View style={styles.top}></View>
       <View style={styles.middle}>
 
-        <Text style={styles.textContainer}> WHAT IS YOUR ADDRESS? </Text>
+        <Text style={styles.textContainer}> SIGN IN </Text>
 
         <View style={styles.formArea}>
           <View style={styles.mainForm}>
             <View style={styles.formItems}>
               <TextInput
                 style={styles.input}
-                placeholder='Street Address'
-                value={line1}
-                onChangeText={text => {handleChange(text, 'line1')}}
+                placeholder='Email'
+                value={email}
+                onChangeText={text => {handleChange(text, 'email')}}
               >
               </TextInput>
 
               <TextInput
                 style={styles.input}
-                placeholder='City'
-                value={city}
-                onChangeText={text => {handleChange(text, 'city')}}
-              >
-              </TextInput>
-
-              <TextInput
-                style={styles.input}
-                placeholder='State'
-                value={state}
-                onChangeText={text => {handleChange(text, 'state')}}
-              >
-              </TextInput>
-
-              <TextInput
-                style={styles.input}
-                placeholder='Zip Code'
-                value={zip}
-                onChangeText={text => {handleChange(text, 'zip')}}
+                placeholder='Password'
+                secureTextEntry={true}
+                value={password}
+                onChangeText={text => {handleChange(text, 'password')}}
               >
               </TextInput>
             </View>
@@ -85,9 +67,10 @@ export default function AddressInput({ getReps, navigation }) {
 
         <View style={styles.continue}>
           <TouchableOpacity>
-            { line1, city, state, zip !== ''
+            { email, password !== ''
              ? <Button
-              title='CONTINUE'
+              title='SIGN IN'
+              disabled={validateForm}
               onPress = {(input) => {handleSubmit(input)}}
               color="#020100"
               />
@@ -98,7 +81,6 @@ export default function AddressInput({ getReps, navigation }) {
       </View>
 
       <View style={styles.bottom}></View>
-
 
     </KeyboardAvoidingView>
 
@@ -112,7 +94,7 @@ const styles = StyleSheet.create({
   },
   top: {
     position: 'relative',
-    backgroundColor: '#F1D302',
+    backgroundColor: '#235789',
     paddingRight: 13,
     paddingLeft: 13,
     height: 200,
@@ -136,24 +118,24 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
     backgroundColor: '#FDFFFC',
     flex: 1,
-    backgroundColor: '#235789'
+    backgroundColor: '#F1D302'
   },
   textContainer: {
-    color: '#020100',
+    color: '#FDFFFC',
     textTransform: 'uppercase',
     letterSpacing: 7,
     fontWeight: '900',
     fontSize: 20,
     lineHeight: 25,
     textAlign: 'center',
-    paddingTop: 90
+    paddingTop: 120
   },
   formArea: {
     alignSelf: 'center',
     width: '100%',
     backgroundColor: '#FDFFFC',
     top: '7%',
-    paddingBottom: 40,
+    paddingBottom: 65,
     paddingTop: 5,
     borderRadius: 25
   },

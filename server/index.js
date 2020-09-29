@@ -9,10 +9,11 @@ const corsConfig = {
   credentials: true,
 };
 
+app.use(cors(corsConfig));
 app.use(express.json());
 app.use(router);
 
-const port = 3000;
-app.listen(port, () => {
-  console.log(`JWT Server running on http://localhost:${port}/ 👍👍👍`);
+const SERVER_PORT = process.env.SERVER_PORT || 3001;
+app.listen(SERVER_PORT, () => {
+  console.log(`JWT Server running on http://localhost:${SERVER_PORT}/ 👍👍👍`);
 })

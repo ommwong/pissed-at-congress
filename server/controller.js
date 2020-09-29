@@ -1,7 +1,7 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const User = require('./models/user');
-const SECRET_KEY;
+const SECRET_KEY = process.env.SECRET_KEY;
 
 const register = async (req, res) => {
   const name = req.body.name;
@@ -9,7 +9,6 @@ const register = async (req, res) => {
   const password = req.body.password;
 
   const user = await User.findOne({ email });
-
   if (user) {
     res.status(409);
     res.send('This email already exists')
@@ -37,10 +36,7 @@ const login = async (req, res) => {
 
   try {
     const user = await User.findOne({ email });
-    const validatedPass;
-    if (user) {
-      validatedPass = await bcrypt.compare(password, user.password);
-    }
+    const validatedPass = await bcrypt.compare(password, user.password);
     if (!validatedPass) throw new Error();
     const accessToken = jwt.sign({ _id: user._id }, SECRET_KEY);
     res.status(200).send({ accessToken });
