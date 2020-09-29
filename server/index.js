@@ -15,9 +15,6 @@ app.use(express.json());
 app.use(router);
 
 const SERVER_PORT = process.env.SERVER_PORT || 3001;
-// app.listen(SERVER_PORT, () => {
-//   console.log(`JWT Server running on http://localhost:${SERVER_PORT}/ 👍👍👍`);
-// })
 
 (async () =>{
   try {

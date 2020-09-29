@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, Image, TextInput, Button, TouchableOpacity, View, KeyboardAvoidingView, ImagePropTypes } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, Text, TextInput, Button, TouchableOpacity, View, KeyboardAvoidingView } from 'react-native';
 
 export default function Register({ registerUser, setIsAuthenticated }) {
 

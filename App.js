@@ -5,7 +5,7 @@ import Rep from './app/screens/Rep';
 import RepList from './app/components/RepList';
 import SenateSearch from './app/screens/SenateSearch';
 import HouseSearch from './app/screens/HouseSearch';
-import Login from './app/screens/Login'
+import Login from './app/screens/Login';
 import Loading from './app/components/Loading';
 import Register from './app/screens/Register';
 // import PickerComponent from './app/screens/PickerComponent';

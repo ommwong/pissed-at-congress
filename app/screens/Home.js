@@ -5,12 +5,13 @@ import address from '../../assets/address.png';
 import newlogo from '../../assets/newlogo.png';
 import key from '../../assets/passkey.png';
 import add from '../../assets/add.png';
+import logout from '../../assets/logout.png';
 
 export default function Home ({ navigation }) {
   return (
 
     <SafeAreaView style={{
-        backgroundColor: '#fff',
+        backgroundColor: '#F1D302',
         flex: 1,
         flexDirection: 'column'
       }}>
@@ -35,14 +36,6 @@ export default function Home ({ navigation }) {
 
             <View>
               <TouchableOpacity onPress={() => {
-              navigation.navigate('Register')
-              }}>
-                <Image source={add} style={{height: 35, width: 35}}></Image>
-              </TouchableOpacity>
-            </View>
-
-            <View>
-              <TouchableOpacity onPress={() => {
               navigation.navigate('Login')
               }}>
                 <Image source={key} style={{height: 35, width: 35}}></Image>
@@ -64,6 +57,7 @@ export default function Home ({ navigation }) {
                 <Image source={name} style={{height: 40, width: 40}}></Image>
               </TouchableOpacity>
             </View>
+
         </View>
 
     </SafeAreaView>

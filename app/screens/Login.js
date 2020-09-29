@@ -80,7 +80,16 @@ export default function Login({ loginUser, setIsAuthenticated }) {
 
       </View>
 
-      <View style={styles.bottom}></View>
+      <View style={styles.bottom}>
+        <View>
+        <TouchableOpacity onPress={() => {
+          navigation.navigate('Register')
+        }}>
+          <Text style={styles.register}>Register Here</Text>
+        </TouchableOpacity>
+        </View>
+
+      </View>
 
     </KeyboardAvoidingView>
 
@@ -118,7 +127,11 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
     backgroundColor: '#FDFFFC',
     flex: 1,
-    backgroundColor: '#F1D302'
+    backgroundColor: '#F1D302',
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    alignItems: 'center'
+
   },
   textContainer: {
     color: '#FDFFFC',
@@ -162,11 +175,18 @@ const styles = StyleSheet.create({
   },
   homeButton: {
     paddingRight: 1,
-    flexDirection: 'row',
+    flexDirection: 'column',
     justifyContent: 'space-evenly',
     alignItems: 'center'
   },
   navigation: {
     flex: 0.3
+  },
+  register: {
+    textTransform: 'uppercase',
+    color: '#020100',
+    fontSize: 20,
+    letterSpacing: 4,
+    fontWeight: '700',
   }
 })
