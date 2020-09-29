@@ -5,7 +5,8 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "eject": "expo eject"
+    "eject": "expo eject",
+    "start:server": "node ./server"
   },
   "dependencies": {
     "@react-native-community/masked-view": "0.1.10",
@@ -18,7 +19,9 @@
     "expo-linking": "^1.0.4",
     "expo-sharing": "^8.4.1",
     "expo-status-bar": "^1.0.2",
+    "express": "^4.17.1",
     "install": "^0.13.0",
+    "nodemon": "^2.0.4",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-39.0.2.tar.gz",
