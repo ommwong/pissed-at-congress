@@ -6,8 +6,9 @@ import RepList from './app/components/RepList';
 import SenateSearch from './app/screens/SenateSearch';
 import HouseSearch from './app/screens/HouseSearch';
 import Loading from './app/components/Loading';
-import PickerComponent from './app/screens/PickerComponent';
-import { getRepByAddress, getSenate, getHouse } from './ApiService';
+import Register from './app/screens/Register';
+// import PickerComponent from './app/screens/PickerComponent';
+import { getRepByAddress, getSenate, getHouse, register } from './ApiService';
 import { NavigationContainer, StackActions } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
@@ -25,7 +26,6 @@ export default function App() {
     .then(list => list.results.map(senate => setSenators(senate.members)))
   }, [])
 
-
   useEffect(() => {
     getHouse()
     .then(list => list.results.map(house => setHouseReps(house.members)))
@@ -39,6 +39,11 @@ export default function App() {
   if (senators.length === 0) {
     return <Loading />
   };
+
+  const registerUser = (name, username, password) => {
+    register({name, username, password})
+      .then(event => console.log('successful'))
+  }
 
   return (
     <NavigationContainer>
@@ -65,6 +70,12 @@ export default function App() {
         <Stack.Screen name="AddressInput" options={{headerShown: false}}>
           {props => (
             <AddressInput getReps={getReps} {...props} />
+          )}
+        </Stack.Screen>
+
+        <Stack.Screen name="Register" options={{headerShown: false}}>
+          {props => (
+            <Register registerUser={registerUser} {...props} />
           )}
         </Stack.Screen>
 

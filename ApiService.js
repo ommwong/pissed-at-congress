@@ -2,6 +2,8 @@ const senateURL = 'https://api.propublica.org/congress/v1/116/senate/members.jso
 
 const houseURL = 'https://api.propublica.org/congress/v1/116/house/members.json';
 
+const BASE_URL = 'http://localhost:3000/';
+
 
 export function getSenate() {
   return fetch (senateURL, {
@@ -38,4 +40,18 @@ export function getRepByAddress(line1, city, state, zip) {
     .catch(error => {
       console.log('Error:', error);
     })
+}
+
+export function register (name, username, password) {
+  return fetch(`${BASE_URL}/register`, {
+    method: 'POST',
+    credentials: 'include',
+    mode: 'cors',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(name, username, password),
+  })
+    .then((res) => res.json())
+    .catch((err) => console.log(err));
 }

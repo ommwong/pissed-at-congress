@@ -4,7 +4,6 @@ const router = require('./router');
 const session = require('express-session');
 const cors = require('cors');
 
-
 const corsConfig = {
   origin: 'http://localhost:19003',
   credentials: true,

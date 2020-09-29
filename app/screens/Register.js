@@ -1,39 +1,33 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, Image, TextInput, Button, TouchableOpacity, View, KeyboardAvoidingView } from 'react-native';
-import address from '../../assets/address.png';
-import logo1 from '../../assets/logo1.png';
 
+export default function Register({ registerUser }) {
 
-export default function AddressInput({ getReps, navigation }) {
+  const [name, setName] = useState('');
+  const [userName, setUserName] = useState('');
+  const [password, setPassword] = useState('');
 
-  const [line1, setLine1] = useState('');
-  const [city, setCity] = useState('');
-  const [state, setState] = useState('');
-  const [zip, setZip] = useState('');
-
-  function handleChange (input, stateName) {
+  function handleChange () {
     switch(stateName) {
-      case 'line1' :
-        return setLine1(input)
-      case 'city' :
-        return setCity(input)
-      case 'state' :
-        return setState(input)
-      case 'zip' :
-        return setZip(input)
+      case 'name' :
+        return name(input)
+      case 'userName' :
+        return userName(input)
+      case 'password' :
+        return password(input)
     }
   }
 
   function handleSubmit (input) {
-    getReps(line1, city, state, zip)
+    registerUser(name, username, password)
 
     if (input) {
-      setLine1('');
-      setCity('');
-      setState('');
-      setZip('');
+      name('');
+      username('');
+      password('');
     }
-    navigation.navigate('RepList');
+    //alert user// navigate to home
+    navigation.navigate('Home');
   }
 
   return (
@@ -43,40 +37,33 @@ export default function AddressInput({ getReps, navigation }) {
       <View style={styles.top}></View>
       <View style={styles.middle}>
 
-        <Text style={styles.textContainer}> WHAT IS YOUR ADDRESS? </Text>
+        <Text style={styles.textContainer}> REGISTER </Text>
 
         <View style={styles.formArea}>
           <View style={styles.mainForm}>
             <View style={styles.formItems}>
               <TextInput
                 style={styles.input}
-                placeholder='Street Address'
-                value={line1}
-                onChangeText={text => {handleChange(text, 'line1')}}
+                placeholder='Name'
+                value={name}
+                onChangeText={text => {handleChange(text, 'name')}}
               >
               </TextInput>
 
               <TextInput
                 style={styles.input}
-                placeholder='City'
-                value={city}
-                onChangeText={text => {handleChange(text, 'city')}}
+                placeholder='email'
+                value={email}
+                onChangeText={text => {handleChange(text, 'email')}}
               >
               </TextInput>
 
               <TextInput
                 style={styles.input}
-                placeholder='State'
-                value={state}
-                onChangeText={text => {handleChange(text, 'state')}}
-              >
-              </TextInput>
-
-              <TextInput
-                style={styles.input}
-                placeholder='Zip Code'
-                value={zip}
-                onChangeText={text => {handleChange(text, 'zip')}}
+                placeholder='password'
+                secureTextEntry={true}
+                value={password}
+                onChangeText={text => {handleChange(text, 'password')}}
               >
               </TextInput>
             </View>
@@ -85,7 +72,7 @@ export default function AddressInput({ getReps, navigation }) {
 
         <View style={styles.continue}>
           <TouchableOpacity>
-            { line1, city, state, zip !== ''
+            { name, user, password !== ''
              ? <Button
               title='CONTINUE'
               onPress = {(input) => {handleSubmit(input)}}
