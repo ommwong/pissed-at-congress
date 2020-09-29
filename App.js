@@ -74,7 +74,7 @@ export default function App() {
           )}
         </Stack.Screen>
 
-        <Stack.Screen name="Rep">
+        <Stack.Screen name="Rep" options={{headerShown: false}}>
           {props => (
             <Rep {...props} />
           )}

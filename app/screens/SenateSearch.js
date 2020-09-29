@@ -151,7 +151,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-evenly',
     alignItems: 'center',
-    paddingTop: 12
+    paddingTop: 9
   },
   searchItem: {
     backgroundColor: '#FDFFFC',
@@ -166,7 +166,7 @@ const styles = StyleSheet.create({
     color: '#020100',
     paddingTop: 5,
     paddingBottom: 5,
-    fontSize: 15,
+    fontSize: 20,
     color: '#020100',
     letterSpacing: 4,
     textAlign: 'center',
