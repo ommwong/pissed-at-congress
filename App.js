@@ -46,7 +46,7 @@ export default function App() {
 
         <Stack.Screen name="Home" component={Home} options={{headerShown: false}}/>
 
-        <Stack.Screen name="SenateSearch">
+        <Stack.Screen name="SenateSearch" options={{headerShown: false}}>
           {props => (
             <SenateSearch senators={senators} {...props} />
           )}

@@ -6,10 +6,12 @@ import logo1 from '../../assets/logo1.png';
 
 const { width, height } = Dimensions.get('window');
 
+const spacing = 5;
+const item_size = width * 1;
+
+
 export default function RepList ({ reps, navigation }) {
 
-  const spacing = 5;
-  const item_size = width * 1;
   const scrollX = useRef(new Animated.Value(0)).current;
 
   return (

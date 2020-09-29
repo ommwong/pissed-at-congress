@@ -44,14 +44,6 @@ export default function AddressInput({ getReps, navigation }) {
       <View style={styles.top}></View>
       <View style={styles.middle}>
 
-        {/* <View style={styles.homeButton}>
-          <TouchableOpacity onPress={() => {
-          navigation.navigate('Home')
-          }}>
-            <Image source={logo1} style={{height: 150, width: 150}}></Image>
-          </TouchableOpacity>
-        </View> */}
-
         <Text style={styles.textContainer}> WHAT IS YOUR ADDRESS? </Text>
 
         <View style={styles.formArea}>
@@ -98,7 +90,8 @@ export default function AddressInput({ getReps, navigation }) {
              ? <Button
               title='CONTINUE'
               onPress = {(input) => {handleSubmit(input)}}
-              color="#020100"/>
+              color="#020100"
+              />
               : null }
             </TouchableOpacity>
         </View>

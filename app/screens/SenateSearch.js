@@ -30,23 +30,22 @@ export default function SenateSearch ({ senators, navigation }) {
 
     <SafeAreaView style={styles.container}>
 
-      {/* <View style={styles.homeButton}>
-        <TouchableOpacity onPress={() => {
-        navigation.navigate('Home')
-        }}>
-          <Image source={logo1} style={{height: 100, width: 100}}></Image>
-        </TouchableOpacity>
-      </View> */}
-
-          <View>
-            <TextInput
-              placeholder='Enter a name'
-              value={searchResult}
-              autoCorrect={false}
-              onChangeText={input => {handleSearchName(input)}}
-              >
-            </TextInput>
+          <View style={styles.searchArea}>
+            <View style={styles.mainSearch}>
+              <View style={styles.searchItem}>
+                <TextInput
+                  style={styles.input}
+                  placeholder='Start typing'
+                  value={searchResult}
+                  autoCorrect={false}
+                  onChangeText={input => {handleSearchName(input)}}
+                  >
+                </TextInput>
+              </View>
+            </View>
           </View>
+
+        <View style={{flex: 4}}>
 
         <Animated.FlatList
           showsHorizontalScrollIndicator={false}
@@ -125,6 +124,7 @@ export default function SenateSearch ({ senators, navigation }) {
           }}
       />
 
+        </View>
     </SafeAreaView>
   );
 }
@@ -135,38 +135,41 @@ const styles = StyleSheet.create({
     backgroundColor: '#FDFFFC',
     justifyContent: 'center'
   },
-  homeButton: {
-  },
-  input: {
-    flex: 3
-  },
-  input: {
-    fontSize: 20,
-    padding: 5,
-    paddingLeft: 5,
-    color: '#020100'
-  },
-  searchArea: {
-    alignSelf: 'center',
-    width: '100%',
-    backgroundColor: '#FDFFFC',
-    top: '3%',
-    paddingBottom: 20,
-    paddingTop: 5,
-    borderRadius: 25,
-  },
-  searchBox: {
-    marginTop: 20
-  },
-  searchItem: {
-
-  },
   image: {
     height: 260,
     width: 260,
     borderRadius: 150,
     margin: 0,
     marginBottom: 10
+  },
+  searchArea: {
+    flex: 0.5,
+    backgroundColor: '#F1D302',
+    borderRadius: 100,
+  },
+  mainSearch: {
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    alignItems: 'center',
+    paddingTop: 12
+  },
+  searchItem: {
+    backgroundColor: '#FDFFFC',
+    paddingBottom: 5,
+    paddingRight: 80,
+    paddingLeft: 80,
+    borderRadius: 40,
+    paddingTop: 10,
+    paddingBottom: 10
+  },
+  input: {
+    color: '#020100',
+    paddingTop: 5,
+    paddingBottom: 5,
+    fontSize: 15,
+    color: '#020100',
+    letterSpacing: 4,
+    textAlign: 'center',
+    fontWeight: '600',
   }
-
 })
