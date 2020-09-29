@@ -1,4 +1,4 @@
-const Sequelize = require('sequelize');//npm install sequelize
+const Sequelize = require('sequelize');
 
 const fs = require('fs');
 const path = require('path');
