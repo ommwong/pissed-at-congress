@@ -4,7 +4,6 @@ import * as Linking from 'expo-linking';
 import * as Sharing from 'expo-sharing'; //SHARING
 import dem from '../../assets/dem.png';
 import gop from '../../assets/gop.png';
-import Modal from 'react-native-modal';
 
 const callPhone = (number) => {
   Linking.openURL(`tel:+1${number}`)
@@ -26,16 +25,12 @@ export default function Rep ( props ) {
 
   return (
     <View style={styles.container}>
-{/*
-      <View style={styles.homeButton}>
-        <TouchableOpacity onPress={() => {
-        props.navigation.navigate('Home')
-        }}>
-          <Image source={logo1} style={styles.homeButton}></Image>
-        </TouchableOpacity>
-      </View> */}
 
-        <TouchableOpacity onPress={() => {setCurrentCard('name')}} style={styles.cardContainer} activeOpacity={0.9}>
+        <TouchableOpacity
+          onPress={() => {setCurrentCard('name')}}
+          style={styles.cardContainer}
+          activeOpacity={0.9}
+        >
           <View style={[styles.card, {backgroundColor: '#235789'}]}>
             <Text style={[styles.heading, {color: '#FDFFFC'}]}>
               <View>
@@ -65,7 +60,11 @@ export default function Rep ( props ) {
           </View>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => {setCurrentCard('info')}} style={styles.cardContainer} activeOpacity={0.9}>
+        <TouchableOpacity
+          onPress={() => {setCurrentCard('info')}}
+          style={styles.cardContainer}
+          activeOpacity={0.9}
+        >
           <View style={[styles.card, {backgroundColor: '#F1D302'}]}>
             <Text style={[styles.heading, {color: '#020100'}]}>
               Info
@@ -100,7 +99,11 @@ export default function Rep ( props ) {
           </View>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => {setCurrentCard('takeAction')}} style={styles.cardContainer} activeOpacity={0.9}>
+        <TouchableOpacity
+          onPress={() => {setCurrentCard('takeAction')}}
+          style={styles.cardContainer}
+          activeOpacity={0.9}
+        >
           <View style={[styles.card, {backgroundColor: '#C1292E'}]}>
             <Text style={[styles.heading, {color: '#FDFFFC'}]}>
               Take Action

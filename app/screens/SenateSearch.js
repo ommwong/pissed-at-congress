@@ -2,7 +2,6 @@ import React, { useState, useRef } from 'react';
 import { StyleSheet, Text, SafeAreaView, TextInput, TouchableOpacity, Image, View, Animated, Dimensions } from 'react-native'
 import logo1 from '../../assets/logo1.png';
 
-
 const { width, height } = Dimensions.get('window');
 
 export default function SenateSearch ({ senators, navigation }) {
