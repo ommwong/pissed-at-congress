@@ -23,4 +23,8 @@ What the app can do:
   <img src="assets/demo1.png" />
 </p>
 
+<p align="center">
+  <img src="assets/demo2.png" />
+</p>
+
 ## Getting started
