@@ -28,7 +28,7 @@ What the app can do:
 </p>
 
 <p align="center">
-  <img src="assets/FinalVidDemo.png" width='50%'/>
+  <img src="assets/FinalVidDemo.gif" width='50%'/>
 </p>
 
 ## Getting started
