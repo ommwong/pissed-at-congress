@@ -6,13 +6,13 @@
 
 Pissed At Congress is a mobile app to help people find and contact members of the United States Congress.
 
-Here are the problems that the app aims to solve:
+Here are the problems that Pissed At Congress aims to solve:
 
 1. A lot of people don't know who their congressmembers are.
 2. A lot of people don't realize that they can directly contact their elected leaders -- about anything!
 3. A lot of people are just pissed at Congress and politicans in general.
 
-What the app can do:
+What Pissed At Congress can do:
 
 1. Users can find their elected leaders with their home address.
 2. Users can also search for a congressmember by name.
