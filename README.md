@@ -10,7 +10,7 @@ Here are the problems that Pissed At Congress aims to solve:
 
 1. A lot of people don't know who their congressmembers are.
 2. A lot of people don't realize that they can directly contact their elected leaders -- about anything!
-3. A lot of people are just pissed at Congress and politicans in general.
+3. People are pissed at politicians. 😏
 
 What Pissed At Congress can do:
 
@@ -18,6 +18,11 @@ What Pissed At Congress can do:
 2. Users can also search for a congressmember by name.
 3. Users can get more information about a congressmember (state, election information, contact information).
 4. Users can call their congressmember directly on their phone - to complain about anything!
+5. Encourage more civic education and engagement! ✊
+
+<p align="center">
+  <img src="assets/FinalVidDemo.gif" width='40%'/>
+</p>
 
 <p align="center">
   <img src="assets/demo1.png" />
@@ -25,10 +30,6 @@ What Pissed At Congress can do:
 
 <p align="center">
   <img src="assets/demo2.png" />
-</p>
-
-<p align="center">
-  <img src="assets/FinalVidDemo.gif" width='30%'/>
 </p>
 
 ## Getting started
@@ -54,7 +55,7 @@ npm install
 npm start
 ```
 
-5. Scan the barcode on the Expo app on your phone
+5. Scan the barcode on the Expo app to run the app on your phone
 
 ## Built with
 * [React Native](https://facebook.github.io/react-native/) - Front end library for mobile UIs
@@ -63,7 +64,7 @@ npm start
 * Other dependencies:
   * [ProPublica Congress API](https://projects.propublica.org/api-docs/congress-api/)
   * [Google Civic Information API](https://developers.google.com/civic-information)
-* Lots of blood, sweat, and tears 😅💃🏻
+* Lots of blood, sweat, and tears 😅 💃🏻
 
 ## Made by
 Mo Wong - [Github](https://github.com/ommwong) - [LinkedIn](https://www.linkedin.com/in/mowong1/)
