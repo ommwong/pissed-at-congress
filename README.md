@@ -28,3 +28,37 @@ What the app can do:
 </p>
 
 ## Getting started
+
+1. Install the React Native Expo development environment
+[Expo XDE](https://www.expo.io)
+```npm install -g exp```
+
+2. Clone this repo
+```bash
+git clone https://github.com/ommwong/pissed-at-congress.git
+```
+
+3. Install the dependencies
+```bash
+npm install
+```
+
+4. Start the development server
+```bash
+npm start
+```
+
+5. Scan the barcode on the Expo app on your phone
+
+## Built with
+* [React Native](https://facebook.github.io/react-native/) - Front end library for mobile UIs
+* [Expo](https://expo.io/) - Cross-platform ios and Android apps
+* [React Navigation](https://reactnavigation.org/) - Routing and navigation for React Native apps
+* Other dependencies:
+  * [ProPublica Congress API](https://projects.propublica.org/api-docs/congress-api/)
+  * [Google Civic Information API](https://developers.google.com/civic-information)
+* Lots of blood, sweat, and tears 😅
+
+## Made by
+Mo Wong - [Github](https://github.com/ommwong) - [LinkedIn](https://www.linkedin.com/in/mowong1/)
+
