@@ -31,7 +31,9 @@ What the app can do:
 
 1. Install the React Native Expo development environment
 [Expo XDE](https://www.expo.io)
-```npm install -g exp```
+```bash
+npm install -g exp
+```
 
 2. Clone this repo
 ```bash
